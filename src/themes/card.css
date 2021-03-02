@@ -1,0 +1,14 @@
+.card{
+    width:200px;
+    height: 200px;
+    background-color: bisque;
+    margin:20px;
+    background: #d6d6d6;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.35);
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.card p{
+    text-align: center
+}
