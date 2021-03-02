@@ -9,7 +9,7 @@ function BaseTemplate() {
       <div className="main_heading">
         <p className="main_heading_name">PhotoGallery</p>
       </div>
-      <CardContainer></CardContainer>
+      <CardContainer store={autorsStore}></CardContainer>
     </div>
   );
 }

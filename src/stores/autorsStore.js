@@ -21,6 +21,7 @@ function storeReducer(state = { autors: null, fetching: true }, action) {
       fetching: state.fetching,
     };
   }
+  return state;
 }
 
 const sagaMiddleware = createSagaMiddleware();

@@ -2,34 +2,34 @@ import autorsStore from '../stores/autorsStore';
 import Card from '../components/card';
 import '../themes/cardsContainer.css';
 import { ReactFragment, useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 
-function Container() {
-  let [inset, insetset] = useState(1);
+function Container(props) {
+  console.log(props);
   useEffect(() => {
     autorsStore.dispatch({ type: 'GETNEWAUTORS' });
   }, []);
-  let newComponents = [];
-  autorsStore.subscribe(() => {
-    if (autorsStore.getState() != undefined) {
-      let data = autorsStore.getState();
-      console.log(data);
-
-      /*     if (!autorsStore.getState().fetching) {
-      let data = autorsStore.getState();
-      console.log(data);
-      for (let i = 0; i < data.length; i++) {
-        console.log(data[i]['username']);
-        newComponents.push(<Card data={data[i]}></Card>);
-      }
-      insetset(0);
-    } */
+  let [inset, insetset] = useState(1);
+  useEffect(() => {
+    if (!autorsStore.getState().fetching) {
     }
   });
   return (
     <div className="cards_container">
-      {inset ? <div>Ожидайте</div> : newComponents}
+      {props.fetching ? (
+        <div>Ожидайте {inset}</div>
+      ) : (
+        <Card data={props.authors[0]}></Card>
+      )}
     </div>
   );
 }
 
-export default Container;
+function stateMap(state) {
+  return {
+    authors: state.authors,
+    fetching: state.fetching,
+  };
+}
+
+export default connect(stateMap)(Container);
