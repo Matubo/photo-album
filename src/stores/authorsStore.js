@@ -1,23 +1,26 @@
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import saga from './autorsStoreSaga';
+import saga from './authorsStoreSaga';
 
-function storeReducer(state = { autors: null, fetching: true }, action) {
+function storeReducer(state = { authors: null, fetching: true }, action) {
+  if (action.type == 'GETNEWAUTHORS') {
+    return state;
+  }
   if (action.type == 'STARTFETCHING') {
     return {
-      autors: state.autors,
+      authors: state.authors,
       fetching: true,
     };
   }
   if (action.type == 'FINISHFETCHING') {
     return {
-      autors: state.autors,
+      authors: state.authors,
       fetching: false,
     };
   }
-  if (action.type == 'SETNEWAUTORS') {
+  if (action.type == 'SETNEWAUTHORS') {
     return {
-      autors: action.newAutors,
+      authors: action.newAuthors,
       fetching: state.fetching,
     };
   }
@@ -25,7 +28,7 @@ function storeReducer(state = { autors: null, fetching: true }, action) {
 }
 
 const sagaMiddleware = createSagaMiddleware();
-const autorsStore = createStore(storeReducer, applyMiddleware(sagaMiddleware));
+const authorsStore = createStore(storeReducer, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(saga);
 
-export default autorsStore;
+export default authorsStore;

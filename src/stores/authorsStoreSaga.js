@@ -1,5 +1,5 @@
 import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
-import getAutors from '../requests/getAutors';
+import getAutors from '../requests/getAuthors';
 // воркер Saga: будет запускаться на действия типа `USER_FETCH_REQUESTED`
 
 function* fetchAutors(action) {
@@ -13,12 +13,12 @@ function* fetchAutors(action) {
     formateData.push({ username: element['username'], id: element['id'] });
   });
   console.log(formateData);
-  yield put({ type: 'SETNEWAUTORS', newAutors: formateData });
+  yield put({ type: 'SETNEWAUTHORS', newAuthors: formateData });
   yield put({ type: 'FINISHFETCHING' });
 }
 
 function* sage() {
-  yield takeLatest('GETNEWAUTORS', fetchAutors);
+  yield takeLatest('GETNEWAUTHORS', fetchAutors);
 }
 
 export default sage;
