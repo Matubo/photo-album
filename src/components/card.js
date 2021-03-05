@@ -7,7 +7,7 @@ function Card(props) {
         style={{ backgroundImage: `url(${props.url})` }}
         className="card"
         onClick={() => {
-          props.callback(props.id);
+          props.callback(props.data);
         }}
       >
         <p>{props.id}</p>

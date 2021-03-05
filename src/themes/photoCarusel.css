@@ -1,0 +1,9 @@
+.carusel_body{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    margin:auto;
+    background-color: rgba(0, 0, 0, 0.411);
+    top:0;
+    left:0;
+}

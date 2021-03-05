@@ -4,14 +4,14 @@ import Card from '../components/card';
 function Photoes(props) {
   console.log(props.state);
   if (props.fetching) {
-    return <div>Ожидайте</div>;
+    return <div className="preloader">Ожидайте</div>;
   }
   let cardsArray = [];
   for (let i = 0; i < props.photoes.length; i++) {
     cardsArray.push(
       <Card
         url={props.photoes[i]['url']}
-        data={props.photoes[i]['id']}
+        data={i}
         callback={props.callback}
       ></Card>
     );

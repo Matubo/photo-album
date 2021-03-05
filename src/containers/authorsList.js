@@ -4,7 +4,7 @@ import Card from '../components/card';
 function Autors(props) {
   console.log(props.state);
   if (props.fetching) {
-    return <div>Ожидайте</div>;
+    return <div className="preloader">Ожидайте</div>;
   }
   let cardsArray = [];
   for (let i = 0; i < props.authors.length; i++) {

@@ -7,10 +7,12 @@ import BackPanel from '../components/backPanel';
 import AuthorsList from './authorsList';
 import AlbumsList from './albumsList';
 import PhotoesList from './photoesList';
+import PhotoCarusel from './photoCarusel';
 import { React } from 'react';
 
 function Container(props) {
   let [stage, setStage] = useState(1);
+  let [popUp, setPopUp] = useState({ state: false, id: 0 });
   function authorCallBack(id) {
     console.log(id);
     albumsStore.dispatch({ type: 'GETNEWALBUMS', id: id });
@@ -24,6 +26,15 @@ function Container(props) {
   function backButtonCallBack(id) {
     setStage(id);
   }
+  function popUpCallBack(id = 0) {
+    console.log(id);
+    if (popUp.state == false) {
+      setPopUp({ state: true, id: id });
+    } else {
+      setPopUp({ state: false, id: 0 });
+    }
+  }
+
   if (stage == 1) {
     return (
       <AuthorsList store={autorsStore} callback={authorCallBack}></AuthorsList>
@@ -51,8 +62,17 @@ function Container(props) {
         ></BackPanel>
         <PhotoesList
           store={photoesStore}
-          callback={albumCallBack}
+          callback={popUpCallBack}
         ></PhotoesList>
+        {popUp.state ? (
+          <PhotoCarusel
+            callback={popUpCallBack}
+            store={photoesStore}
+            id={popUp.id}
+          ></PhotoCarusel>
+        ) : (
+          <></>
+        )}
       </>
     );
   }
