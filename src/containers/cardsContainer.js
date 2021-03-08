@@ -1,9 +1,9 @@
-import autorsStore from '../stores/authorsStore';
+import authorsStore from '../stores/authorsStore';
 import albumsStore from '../stores/albumsStore';
 import photosStore from '../stores/photosStore';
 import { useState } from 'react';
 import '../themes/cardsContainer.css';
-import BackPanel from '../components/backPanel';
+import StagePanel from '../components/stagePanel';
 import AuthorsList from './authorsList';
 import AlbumsList from './albumsList';
 import PhotosList from './photosList';
@@ -11,61 +11,60 @@ import PhotoCarusel from './photoCarusel';
 import { React } from 'react';
 
 function Container(props) {
-  let [stage, setStage] = useState(1);
-  let [popUp, setPopUp] = useState({ state: false, id: 0 });
-  function authorCallBack(id) {
-    console.log(id);
+  let [viewingStage, setViewingStage] = useState(1);
+  let [popUPStatus, setPopUPState] = useState({ displayed: false, id: 0 });
+  function setAlbumsStage(id) {
     albumsStore.dispatch({ type: 'GETNEWALBUMS', id: id });
-    setStage(2);
+    setViewingStage(2);
   }
-  function albumCallBack(id) {
+  function setPhotosStage(id) {
     console.log(id);
     photosStore.dispatch({ type: 'GETNEWPHOTOS', id: id });
-    setStage(3);
+    setViewingStage(3);
   }
-  function backButtonCallBack(id) {
-    setStage(id);
+  function backButtonEvent(id) {
+    setViewingStage(id);
   }
-  function popUpCallBack(id = 0) {
+  function setPopUPStatus(id = 0) {
     console.log(id);
-    if (popUp.state == false) {
-      setPopUp({ state: true, id: id });
+    if (popUPStatus.displayed == false) {
+      setPopUPState({ displayed: true, id: id });
     } else {
-      setPopUp({ state: false, id: 0 });
+      setPopUPState({ displayed: false, id: 0 });
     }
   }
 
-  if (stage == 1) {
+  if (viewingStage == 1) {
     return (
-      <AuthorsList store={autorsStore} callback={authorCallBack}></AuthorsList>
+      <AuthorsList store={authorsStore} callback={setAlbumsStage}></AuthorsList>
     );
   }
-  if (stage == 2) {
+  if (viewingStage == 2) {
     return (
       <>
-        <BackPanel
-          callback={backButtonCallBack}
+        <StagePanel
+          callback={backButtonEvent}
           id={1}
           name="Albums"
-        ></BackPanel>
-        <AlbumsList store={albumsStore} callback={albumCallBack}></AlbumsList>
+        ></StagePanel>
+        <AlbumsList store={albumsStore} callback={setPhotosStage}></AlbumsList>
       </>
     );
   }
-  if (stage == 3) {
+  if (viewingStage == 3) {
     return (
       <>
-        <BackPanel
-          callback={backButtonCallBack}
+        <StagePanel
+          callback={backButtonEvent}
           id={2}
           name="Photos"
-        ></BackPanel>
-        <PhotosList store={photosStore} callback={popUpCallBack}></PhotosList>
-        {popUp.state ? (
+        ></StagePanel>
+        <PhotosList store={photosStore} callback={setPopUPStatus}></PhotosList>
+        {popUPStatus.displayed ? (
           <PhotoCarusel
-            callback={popUpCallBack}
+            callback={setPopUPStatus}
             store={photosStore}
-            id={popUp.id}
+            id={popUPStatus.id}
           ></PhotoCarusel>
         ) : (
           <></>

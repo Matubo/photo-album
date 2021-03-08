@@ -1,7 +1,7 @@
-import '../themes/backPanel.css';
+import '../themes/stagePanel.css';
 import imgURL from '../img/arrow.png';
 
-function BackPanel(props) {
+function StagePanel(props) {
   return (
     <div className="content_heading">
       <div className="content_heading_name">{props.name}</div>
@@ -16,4 +16,4 @@ function BackPanel(props) {
   );
 }
 
-export default BackPanel;
+export default StagePanel;

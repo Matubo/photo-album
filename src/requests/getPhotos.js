@@ -10,19 +10,19 @@ function request(id) {
         return Promise.all(responses.map((result) => result.json()));
       })
       .then((data) => {
-        console.log(data);
         return data;
       });
   } else {
     data = fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${id}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         return data;
       });
   }
+  data.catch((e) => {
+    console.log(e);
+  });
 
-  console.log(data);
   return data;
 }
 

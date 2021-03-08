@@ -4,8 +4,10 @@ function request() {
     .then((data) => {
       console.log(data);
       return data;
+    })
+    .catch((e) => {
+      console.log(e);
     });
-  console.log(data);
   return data;
 }
 
