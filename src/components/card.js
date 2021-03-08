@@ -4,16 +4,17 @@ function Card(props) {
   if (props.url != undefined) {
     return (
       <div
-        style={{ backgroundImage: `url(${props.url})` }}
+        style={{
+          backgroundImage: `url(${props.url})`,
+        }}
         className="card"
         onClick={() => {
           props.callback(props.data);
         }}
-      >
-        <p>{props.id}</p>
-      </div>
+      ></div>
     );
   }
+
   return (
     <div
       className="card"

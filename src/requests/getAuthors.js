@@ -8,4 +8,5 @@ function request() {
   console.log(data);
   return data;
 }
+
 export default request;

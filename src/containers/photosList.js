@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
 import Card from '../components/card';
 
-function Photoes(props) {
+function Photos(props) {
   console.log(props.state);
   if (props.fetching) {
     return <div className="preloader">Ожидайте</div>;
   }
   let cardsArray = [];
-  for (let i = 0; i < props.photoes.length; i++) {
+  for (let i = 0; i < props.photos.length; i++) {
     cardsArray.push(
       <Card
-        url={props.photoes[i]['url']}
+        url={props.photos[i]['url']}
         data={i}
         callback={props.callback}
       ></Card>
@@ -21,10 +21,10 @@ function Photoes(props) {
 
 function stateMap(state) {
   return {
-    photoes: state.photoes,
+    photos: state.photos,
     id: state.id,
     fetching: state.fetching,
   };
 }
 
-export default connect(stateMap)(Photoes);
+export default connect(stateMap)(Photos);

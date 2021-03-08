@@ -1,11 +1,14 @@
 function request(id) {
   let data = fetch(`https://jsonplaceholder.typicode.com/albums?userId=${id}`)
     .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      return data;
+    .then((result) => {
+      return result;
+    })
+    .catch((e) => {
+      console.log(e);
     });
-  console.log(data);
+
   return data;
 }
+
 export default request;

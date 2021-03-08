@@ -1,12 +1,12 @@
 import autorsStore from '../stores/authorsStore';
 import albumsStore from '../stores/albumsStore';
-import photoesStore from '../stores/photoesStore';
+import photosStore from '../stores/photosStore';
 import { useState } from 'react';
 import '../themes/cardsContainer.css';
 import BackPanel from '../components/backPanel';
 import AuthorsList from './authorsList';
 import AlbumsList from './albumsList';
-import PhotoesList from './photoesList';
+import PhotosList from './photosList';
 import PhotoCarusel from './photoCarusel';
 import { React } from 'react';
 
@@ -20,7 +20,7 @@ function Container(props) {
   }
   function albumCallBack(id) {
     console.log(id);
-    photoesStore.dispatch({ type: 'GETNEWPHOTOES', id: id });
+    photosStore.dispatch({ type: 'GETNEWPHOTOS', id: id });
     setStage(3);
   }
   function backButtonCallBack(id) {
@@ -60,14 +60,11 @@ function Container(props) {
           id={2}
           name="Photos"
         ></BackPanel>
-        <PhotoesList
-          store={photoesStore}
-          callback={popUpCallBack}
-        ></PhotoesList>
+        <PhotosList store={photosStore} callback={popUpCallBack}></PhotosList>
         {popUp.state ? (
           <PhotoCarusel
             callback={popUpCallBack}
-            store={photoesStore}
+            store={photosStore}
             id={popUp.id}
           ></PhotoCarusel>
         ) : (

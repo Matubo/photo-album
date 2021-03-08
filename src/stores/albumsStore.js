@@ -9,24 +9,26 @@ function storeReducer(state = { albums: null, fetching: true }, action) {
       fetching: true,
     };
   }
+
   if (action.type == 'FINISHFETCHING') {
     return {
       albums: state.albums,
       fetching: false,
     };
   }
+
   if (action.type == 'SETNEWALBUMS') {
     return {
       albums: action.newAlbums,
       fetching: state.fetching,
     };
   }
+
   if (action.type == 'GETNEWALBUMS') {
-    return {
-      albums: state.albums,
-      fetching: state.fetching,
-    };
+    return state;
   }
+
+  return state;
 }
 
 const sagaMiddleware = createSagaMiddleware();
