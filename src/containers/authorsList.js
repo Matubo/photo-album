@@ -12,7 +12,7 @@ function Autors(props) {
       <Card
         data={props.authors[i]['username']}
         id={props.authors[i]['id']}
-        callback={props.callback}
+        callback={props.setNextStage}
       ></Card>
     );
   }

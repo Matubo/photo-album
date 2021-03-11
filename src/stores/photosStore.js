@@ -10,10 +10,19 @@ function storeReducer(state = { photos: null, fetching: true }, action) {
     };
   }
 
+  if (action.type == 'SETFETCHINGERROR') {
+    return {
+      photos: state.photos,
+      fetching: state.fetching,
+      fetchingError: true,
+    };
+  }
+
   if (action.type == 'FINISHFETCHING') {
     return {
       photos: state.photos,
       fetching: false,
+      fetchingError: state.fetchingError,
     };
   }
 
@@ -21,6 +30,7 @@ function storeReducer(state = { photos: null, fetching: true }, action) {
     return {
       photos: action.newPhotos,
       fetching: state.fetching,
+      fetchingError: state.fetchingError,
     };
   }
 

@@ -1,18 +1,18 @@
 .next_button{
     height: 100vh;
     position: absolute;
-    right:0;
     top:0;
     display: flex;
     align-items: center;
-    padding-right:1.1em;
     background-color: rgba(0, 0, 0, 0.671);
     cursor: pointer;
 }
+
 .next_button img, .previous_button img{
 height: 20px;
 margin: 15px;
 }
+
 .previous_button{
     height: 100vh;
     position: absolute;
@@ -23,6 +23,7 @@ margin: 15px;
     background-color: rgba(0, 0, 0, 0.671);
     cursor: pointer;
 }
+
 .previous_button img{
     transform: rotate(180deg);
 }

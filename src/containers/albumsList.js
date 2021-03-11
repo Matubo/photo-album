@@ -11,10 +11,10 @@ function Albums(props) {
     cardsArray.push(
       <div>
         <Card
-          data={props.albums[i]['id']}
           id={props.albums[i]['id']}
           url={props.albums[i]['url']}
-          callback={props.callback}
+          title={props.albums[i]['title']}
+          callback={props.setNextStage}
         ></Card>
       </div>
     );
@@ -26,6 +26,7 @@ function stateMap(state) {
   return {
     albums: state.albums,
     fetching: state.fetching,
+    title: state.title,
   };
 }
 

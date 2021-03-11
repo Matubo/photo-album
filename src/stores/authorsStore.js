@@ -2,15 +2,23 @@ import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import saga from './authorsStoreSaga';
 
-function storeReducer(state = { authors: null, fetching: true }, action) {
-  if (action.type == 'GETNEWAUTHORS') {
-    return state;
-  }
-
+function storeReducer(
+  state = { authors: null, fetching: true, fetchingError: false },
+  action
+) {
   if (action.type == 'STARTFETCHING') {
     return {
       authors: state.authors,
       fetching: true,
+      fetchingError: false,
+    };
+  }
+
+  if (action.type == 'SETFETCHINGERROR') {
+    return {
+      authors: state.authors,
+      fetching: state.fetching,
+      fetchingError: true,
     };
   }
 
@@ -18,6 +26,7 @@ function storeReducer(state = { authors: null, fetching: true }, action) {
     return {
       authors: state.authors,
       fetching: false,
+      fetchingError: state.fetchingError,
     };
   }
 
@@ -25,7 +34,12 @@ function storeReducer(state = { authors: null, fetching: true }, action) {
     return {
       authors: action.newAuthors,
       fetching: state.fetching,
+      fetchingError: state.fetchingError,
     };
+  }
+
+  if (action.type == 'GETNEWAUTHORS') {
+    return state;
   }
 
   return state;

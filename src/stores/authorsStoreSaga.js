@@ -4,16 +4,20 @@ import getAutors from '../requests/getAuthors';
 
 function* fetchAutors(action) {
   yield put({ type: 'STARTFETCHING' });
-  let data = yield call(() => {
+  let authorGetResult = yield call(() => {
     return getAutors();
   });
-  console.log(data);
-  let formateData = [];
-  data.forEach((element) => {
-    formateData.push({ username: element['username'], id: element['id'] });
-  });
-  console.log(formateData);
-  yield put({ type: 'SETNEWAUTHORS', newAuthors: formateData });
+  let formateResult = [];
+  if (!authorGetResult.error) {
+    let data = authorGetResult.result;
+    data.forEach((element) => {
+      formateResult.push({ username: element['username'], id: element['id'] });
+    });
+  } else {
+    yield put({ type: 'SETFETCHINGERROR' });
+    formateResult.push({ username: 'fetch error', id: 'fetch error' });
+  }
+  yield put({ type: 'SETNEWAUTHORS', newAuthors: formateResult });
   yield put({ type: 'FINISHFETCHING' });
 }
 

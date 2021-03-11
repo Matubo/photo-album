@@ -3,15 +3,18 @@ import '../themes/card.css';
 function Card(props) {
   if (props.url != undefined) {
     return (
-      <div
-        style={{
-          backgroundImage: `url(${props.url})`,
-        }}
-        className="card"
-        onClick={() => {
-          props.callback(props.data);
-        }}
-      ></div>
+      <div className="card">
+        <div
+          className="card_img"
+          style={{
+            backgroundImage: `url(${props.url})`,
+          }}
+          onClick={() => {
+            props.callback(props.id);
+          }}
+        ></div>
+        <p className="card_title">{props.title}</p>
+      </div>
     );
   }
 
@@ -22,7 +25,7 @@ function Card(props) {
         props.callback(props.id);
       }}
     >
-      <p>{props.data}</p>
+      <p className="card_autor">{props.data}</p>
     </div>
   );
 }

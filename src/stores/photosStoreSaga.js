@@ -4,14 +4,28 @@ import getPhotos from '../requests/getPhotos';
 
 function* fetchPhotos(action) {
   yield put({ type: 'STARTFETCHING' });
-  let data = yield call(() => {
+  let photoGetResult = yield call(() => {
     return getPhotos(action.id);
   });
-  console.log(data);
   let formateData = [];
-  data.forEach((element) => {
-    formateData.push({ url: element['url'], id: element['id'] });
-  });
+  if (photoGetResult.error) {
+    yield put({ type: 'SETFETCHINGERROR' });
+    formateData.push({
+      url: 'fetch error',
+      id: 'fetch error',
+      title: 'fetch error',
+    });
+  } else {
+    let data = photoGetResult.result;
+    data.forEach((element) => {
+      formateData.push({
+        url: element['url'],
+        id: element['id'],
+        title: element['title'],
+      });
+    });
+    console.log(data);
+  }
   console.log(formateData);
   yield put({ type: 'SETNEWPHOTOS', newPhotos: formateData });
   yield put({ type: 'FINISHFETCHING' });

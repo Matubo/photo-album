@@ -2,18 +2,30 @@ import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import saga from './albumsStoreSaga';
 
-function storeReducer(state = { albums: null, fetching: true }, action) {
+function storeReducer(
+  state = { albums: null, fetching: true, fetchingError: false },
+  action
+) {
   if (action.type == 'STARTFETCHING') {
     return {
       albums: state.albums,
       fetching: true,
+      fetchingError: false,
     };
   }
 
+  if (action.type == 'SETFETCHINGERROR') {
+    return {
+      albums: state.albums,
+      fetching: state.fetching,
+      fetchingError: true,
+    };
+  }
   if (action.type == 'FINISHFETCHING') {
     return {
       albums: state.albums,
       fetching: false,
+      fetchingError: state.fetchingError,
     };
   }
 
@@ -21,6 +33,7 @@ function storeReducer(state = { albums: null, fetching: true }, action) {
     return {
       albums: action.newAlbums,
       fetching: state.fetching,
+      fetchingError: state.fetchingError,
     };
   }
 

@@ -6,7 +6,7 @@ body {
 .main {
   margin: 20px 40px;
   background: #ffffff;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   border-radius: 20px;
   min-height: calc(100vh - 40px);
 }
@@ -15,7 +15,6 @@ body {
   position: relative;
   top: 0;
   background-color: #c7c7c7;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
 }
 .main_heading_name {
   text-align: center;
@@ -24,7 +23,14 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   margin-bottom: 0;;
 }
+
 .preloader{
-  text-align: center;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+  height: 100vh;
+}
+.preloader_img{
+  margin:auto
 }

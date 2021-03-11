@@ -1,10 +1,10 @@
 import '../themes/photoCarusel.css';
 import { useState } from 'react';
-import { connect } from 'react-redux';
 import { NextButton, PreviousButton } from '../components/switchButton';
 
 function PhotoCarusel(props) {
   let [photoID, setPhotoID] = useState(props.id);
+
   function nextPhoto() {
     console.log('next ' + photoID);
     if (photoID < props.photos.length - 1) {
@@ -13,6 +13,7 @@ function PhotoCarusel(props) {
       setPhotoID(0);
     }
   }
+
   function previousPhoto() {
     console.log('prev ' + photoID);
     if (photoID > 0) {
@@ -21,12 +22,13 @@ function PhotoCarusel(props) {
       setPhotoID(props.photos.length - 1);
     }
   }
+
   return (
     <div
       className="carusel_body"
       onClick={(e) => {
         if (e.target.className == 'carusel_body') {
-          props.callback();
+          props.setPopUpStatus();
         }
       }}
     >
@@ -37,14 +39,9 @@ function PhotoCarusel(props) {
       ></img>
       <NextButton callback={nextPhoto}></NextButton>
       <PreviousButton callback={previousPhoto}></PreviousButton>
+      <p className="carusel_title">{props.photos[photoID]['title']}</p>
     </div>
   );
 }
 
-function stateMap(state) {
-  return {
-    photos: state.photos,
-  };
-}
-
-export default connect(stateMap)(PhotoCarusel);
+export default PhotoCarusel;

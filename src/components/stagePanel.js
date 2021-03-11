@@ -9,7 +9,7 @@ function StagePanel(props) {
         className="content_heading_button"
         src={imgURL}
         onClick={() => {
-          props.callback(props.id);
+          props.backButtonEvent();
         }}
       />
     </div>

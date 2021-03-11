@@ -5,29 +5,47 @@ import getPhotos from '../requests/getPhotos';
 
 function* fetchAlbums(action) {
   yield put({ type: 'STARTFETCHING' });
-  let data = yield call(() => {
+  let albumGetResult = yield call(() => {
     return getAlbums(action.id);
   });
-  console.log(data);
-
-  let idList = data.map((elem) => elem['id']);
-  console.log(idList);
-  let urlList = yield call(() => {
-    return getPhotos(idList);
-  });
-  console.log('url list' + urlList);
-  let formateData = [];
-  for (let i = 0; i < data.length; i++) {
-    formateData.push({
-      userId: data[i]['userId'],
-      id: data[i]['id'],
-      url: urlList[i][0]['thumbnailUrl'],
+  let formateAlbumsData = [];
+  if (albumGetResult.error) {
+    yield put({ type: 'SETFETCHINGERROR' });
+    formateAlbumsData.push({
+      userId: 'fetch error',
+      id: 'fetch error',
+      url: 'fetch error',
+      title: 'fetch error',
     });
+  } else {
+    let albumsData = albumGetResult.result;
+    let albumsIdList = albumsData.map((elem) => elem['id']);
+    let photoGetResult = yield call(() => {
+      return getPhotos(albumsIdList);
+    });
+    //////////
+    if (photoGetResult.error) {
+      formateAlbumsData.push({
+        userId: 'fetch error',
+        id: 'fetch error',
+        url: 'fetch error',
+        title: 'fetch error',
+      });
+    } else {
+      let photosData = photoGetResult.result;
+      console.log('url list' + photoGetResult);
+      for (let i = 0; i < albumsData.length; i++) {
+        formateAlbumsData.push({
+          userId: albumsData[i]['userId'],
+          id: albumsData[i]['id'],
+          title: albumsData[i]['title'],
+          url: photosData[i][0]['thumbnailUrl'],
+        });
+      }
+    }
   }
 
-  console.log(formateData);
-
-  yield put({ type: 'SETNEWALBUMS', newAlbums: formateData });
+  yield put({ type: 'SETNEWALBUMS', newAlbums: formateAlbumsData });
   yield put({ type: 'FINISHFETCHING' });
 }
 
