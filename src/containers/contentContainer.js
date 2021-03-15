@@ -21,8 +21,10 @@ function Container(props) {
     setViewingStage(3);
   }
 
-  function setPreviousStage(id) {
-    setViewingStage(viewingStage - 1);
+  function setPreviousStage() {
+    if (viewingStage > 1) {
+      setViewingStage(viewingStage - 1);
+    }
   }
 
   if (viewingStage == 1) {

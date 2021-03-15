@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
-import Card from '../components/card';
+import { CardWithoutBackground as Card } from '../components/card';
 
-function getCardsArray(autors, callback) {
+function getCardsArray(authors, callback) {
   let array = [];
-  for (let i = 0; i < autors.length; i++) {
+  for (let i = 0; i < authors.length; i++) {
     array.push(
       <Card
-        username={autors[i]['username']}
-        id={autors[i]['id']}
+        username={authors[i]['username']}
+        id={authors[i]['id']}
         callback={callback}
       ></Card>
     );
@@ -15,24 +15,24 @@ function getCardsArray(autors, callback) {
   return array;
 }
 
-function Autors(props) {
+function authors(props) {
   if (props.fetching) {
     return <div className="preloader">Ожидайте</div>;
   }
 
   return (
     <div className="cards_container">
-      {getCardsArray(props.autors, props.setNextStage)}
+      {getCardsArray(props.authors, props.setNextStage)}
     </div>
   );
 }
 
 function stateMap(state) {
   return {
-    autors: state.authors,
+    authors: state.authors,
     id: state.id,
     fetching: state.fetching,
   };
 }
 
-export default connect(stateMap)(Autors);
+export default connect(stateMap)(authors);

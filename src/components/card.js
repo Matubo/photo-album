@@ -1,33 +1,33 @@
 import '../themes/card.css';
 
-function Card(props) {
-  if (props.username != undefined) {
-    return (
+function CardWithoutBackground(props) {
+  return (
+    <div
+      className="card"
+      onClick={() => {
+        props.callback(props.id);
+      }}
+    >
+      <p className="card_author">{props.username}</p>
+    </div>
+  );
+}
+
+function CardWithBackground(props) {
+  return (
+    <div className="card">
       <div
-        className="card"
+        className="card_img"
+        style={{
+          backgroundImage: `url(${props.url})`,
+        }}
         onClick={() => {
           props.callback(props.id);
         }}
-      >
-        <p className="card_autor">{props.username}</p>
-      </div>
-    );
-  } else {
-    return (
-      <div className="card">
-        <div
-          className="card_img"
-          style={{
-            backgroundImage: `url(${props.url})`,
-          }}
-          onClick={() => {
-            props.callback(props.id);
-          }}
-        ></div>
-        <p className="card_title">{props.title}</p>
-      </div>
-    );
-  }
+      ></div>
+      <p className="card_title">{props.title}</p>
+    </div>
+  );
 }
 
-export default Card;
+export { CardWithoutBackground, CardWithBackground };

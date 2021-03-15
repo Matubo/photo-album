@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Card from '../components/card';
+import { CardWithBackground as Card } from '../components/card';
 import '../themes/albumList.css';
 
 function getCardsArray(albums, callback) {

@@ -28,7 +28,7 @@ function PhotoCarusel(props) {
       className="carusel_body"
       onClick={(e) => {
         if (e.target.className == 'carusel_body') {
-          props.setPopUpStatus();
+          props.changePopUPStatus();
         }
       }}
     >

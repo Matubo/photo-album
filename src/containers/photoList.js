@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { useState } from 'react';
-import Card from '../components/card';
+import { CardWithBackground as Card } from '../components/card';
 import PhotoCarusel from './photoCarusel';
 
 function getCardsArray(photos, callback) {
@@ -19,14 +19,14 @@ function getCardsArray(photos, callback) {
 }
 
 function Photos(props) {
-  let [popUPStatus, setPopUPState] = useState({ displayed: false, id: 0 });
+  let [popUPStatus, setPopUPStatus] = useState({ displayed: false, id: 0 });
 
-  function setPopUPStatus(id = 0) {
+  function changePopUPStatus(id = 0) {
     console.log(id);
     if (popUPStatus.displayed == false) {
-      setPopUPState({ displayed: true, id: id });
+      setPopUPStatus({ displayed: true, id: id });
     } else {
-      setPopUPState({ displayed: false, id: 0 });
+      setPopUPStatus({ displayed: false, id: 0 });
     }
   }
 
@@ -37,11 +37,11 @@ function Photos(props) {
   return (
     <>
       <div className="cards_container">
-        {getCardsArray(props.photos, setPopUPStatus)}
+        {getCardsArray(props.photos, changePopUPStatus)}
       </div>
       {popUPStatus.displayed ? (
         <PhotoCarusel
-          setPopUpStatus={setPopUPStatus}
+          changePopUPStatus={changePopUPStatus}
           photos={props.photos}
           id={popUPStatus.id}
         ></PhotoCarusel>
