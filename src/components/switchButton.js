@@ -3,23 +3,30 @@ import switch_arrow from '../img/switch_arrow.png';
 import '../themes/switchButton.css';
 
 function NextButton(props) {
-  let [nextButtonProperty, setNextButtonProperty] = useState({
+  let [scrollBarIndent, setScrollBarIndent] = useState({
     right: '0px',
   });
 
   useEffect(() => {
-    let newProperty = window.innerWidth - document.body.clientWidth + 'px';
-    if (newProperty != nextButtonProperty.right) {
-      setNextButtonProperty({
-        right: newProperty,
-      });
-    }
-  });
+    let newScrollBarIndent =
+      window.innerWidth - document.body.clientWidth + 'px';
+    setScrollBarIndent({
+      right: newScrollBarIndent,
+    });
+  }, []);
+
+  window.onresize = function () {
+    let newScrollBarIndent =
+      window.innerWidth - document.body.clientWidth + 'px';
+    setScrollBarIndent({
+      right: newScrollBarIndent,
+    });
+  };
 
   return (
     <div
       className="next_button"
-      style={nextButtonProperty}
+      style={scrollBarIndent}
       onClick={props.callback}
     >
       <img src={switch_arrow}></img>
@@ -35,4 +42,4 @@ function PreviousButton(props) {
   );
 }
 
-export { NextButton as NextButton, PreviousButton as PreviousButton };
+export { NextButton, PreviousButton };
