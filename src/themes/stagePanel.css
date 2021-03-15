@@ -1,6 +1,7 @@
 .content_heading{
     position: relative;
-    background-color: #B1B1B1;
+  
+    background: linear-gradient(#B1B1B1 0%, #9c9c9c 100%);
     margin:0;
     height: 30px;
 }

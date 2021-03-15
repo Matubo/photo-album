@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import saga from './albumsStoreSaga';
+import saga from './albumStoreSaga';
 
 function storeReducer(
   state = { albums: null, fetching: true, fetchingError: false },
@@ -45,7 +45,7 @@ function storeReducer(
 }
 
 const sagaMiddleware = createSagaMiddleware();
-const albumsStore = createStore(storeReducer, applyMiddleware(sagaMiddleware));
+const albumStore = createStore(storeReducer, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(saga);
 
-export default albumsStore;
+export default albumStore;

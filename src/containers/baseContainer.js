@@ -1,20 +1,20 @@
-import '../themes/baseTemplate.css';
-import authorsStore from '../stores/authorsStore';
-import MainContentContainer from './mainContentContainer';
+import '../themes/baseContainer.css';
+import authorStore from '../stores/authorStore';
+import ContentContainer from './contentContainer';
 import React, { useState, useEffect } from 'react';
 import preloaderIMG from '../img/preloader.png';
 
-function BaseTemplate() {
+function ContainerTemplate() {
   let [preloaderStatus, setPreloaderStatus] = useState({ displayed: true });
   useEffect(() => {
-    authorsStore.dispatch({ type: 'GETNEWAUTHORS' });
+    authorStore.dispatch({ type: 'GETNEWAUTHORS' });
   }, []);
 
-  authorsStore.subscribe(() => {
-    if (!authorsStore.getState().fetching) {
+  authorStore.subscribe(() => {
+    if (!authorStore.getState().fetching) {
       setPreloaderStatus({ displayed: false });
     }
-    if (authorsStore.getState().fetching) {
+    if (authorStore.getState().fetching) {
       setPreloaderStatus({ displayed: true });
     }
   });
@@ -28,9 +28,9 @@ function BaseTemplate() {
       <div className="main_heading">
         <p className="main_heading_name">PhotoGallery</p>
       </div>
-      <MainContentContainer></MainContentContainer>
+      <ContentContainer></ContentContainer>
     </div>
   );
 }
 
-export default BaseTemplate;
+export default ContainerTemplate;

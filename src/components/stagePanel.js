@@ -6,10 +6,10 @@ function StagePanel(props) {
     <div className="content_heading">
       <div className="content_heading_name">{props.name}</div>
       <img
-        className="content_heading_button"
+        className="content_heading_button back_button"
         src={imgURL}
         onClick={() => {
-          props.backButtonEvent();
+          props.setPreviousStage();
         }}
       />
     </div>

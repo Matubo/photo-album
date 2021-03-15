@@ -1,7 +1,18 @@
 import '../themes/card.css';
 
 function Card(props) {
-  if (props.url != undefined) {
+  if (props.username != undefined) {
+    return (
+      <div
+        className="card"
+        onClick={() => {
+          props.callback(props.id);
+        }}
+      >
+        <p className="card_autor">{props.username}</p>
+      </div>
+    );
+  } else {
     return (
       <div className="card">
         <div
@@ -17,17 +28,6 @@ function Card(props) {
       </div>
     );
   }
-
-  return (
-    <div
-      className="card"
-      onClick={() => {
-        props.callback(props.id);
-      }}
-    >
-      <p className="card_autor">{props.data}</p>
-    </div>
-  );
 }
 
 export default Card;

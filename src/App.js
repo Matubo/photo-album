@@ -1,10 +1,8 @@
-
-import "./App.css";
-import "./containers/baseTemplate";
-import BaseTemplate from "./containers/baseTemplate";
+import './App.css';
+import BaseContainer from './containers/baseContainer';
 
 function App() {
-  return <BaseTemplate></BaseTemplate>;
+  return <BaseContainer></BaseContainer>;
 }
 
 export default App;

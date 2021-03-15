@@ -31,8 +31,8 @@ function* fetchPhotos(action) {
   yield put({ type: 'FINISHFETCHING' });
 }
 
-function* sage() {
+function* saga() {
   yield takeLatest('GETNEWPHOTOS', fetchPhotos);
 }
 
-export default sage;
+export default saga;

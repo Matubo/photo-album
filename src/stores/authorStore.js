@@ -1,18 +1,22 @@
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import saga from './photosStoreSaga';
+import saga from './authorStoreSaga';
 
-function storeReducer(state = { photos: null, fetching: true }, action) {
+function storeReducer(
+  state = { authors: null, fetching: true, fetchingError: false },
+  action
+) {
   if (action.type == 'STARTFETCHING') {
     return {
-      photos: state.photos,
+      authors: state.authors,
       fetching: true,
+      fetchingError: false,
     };
   }
 
   if (action.type == 'SETFETCHINGERROR') {
     return {
-      photos: state.photos,
+      authors: state.authors,
       fetching: state.fetching,
       fetchingError: true,
     };
@@ -20,21 +24,21 @@ function storeReducer(state = { photos: null, fetching: true }, action) {
 
   if (action.type == 'FINISHFETCHING') {
     return {
-      photos: state.photos,
+      authors: state.authors,
       fetching: false,
       fetchingError: state.fetchingError,
     };
   }
 
-  if (action.type == 'SETNEWPHOTOS') {
+  if (action.type == 'SETNEWAUTHORS') {
     return {
-      photos: action.newPhotos,
+      authors: action.newAuthors,
       fetching: state.fetching,
       fetchingError: state.fetchingError,
     };
   }
 
-  if (action.type == 'GETNEWPHOTOS') {
+  if (action.type == 'GETNEWAUTHORS') {
     return state;
   }
 
@@ -42,7 +46,7 @@ function storeReducer(state = { photos: null, fetching: true }, action) {
 }
 
 const sagaMiddleware = createSagaMiddleware();
-const photosStore = createStore(storeReducer, applyMiddleware(sagaMiddleware));
+const authorStore = createStore(storeReducer, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(saga);
 
-export default photosStore;
+export default authorStore;

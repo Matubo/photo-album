@@ -3,6 +3,21 @@ import { useState } from 'react';
 import Card from '../components/card';
 import PhotoCarusel from './photoCarusel';
 
+function getCardsArray(photos, callback) {
+  let array = [];
+  for (let i = 0; i < photos.length; i++) {
+    array.push(
+      <Card
+        url={photos[i]['url']}
+        id={i}
+        title={photos[i]['title']}
+        callback={callback}
+      ></Card>
+    );
+  }
+  return array;
+}
+
 function Photos(props) {
   let [popUPStatus, setPopUPState] = useState({ displayed: false, id: 0 });
 
@@ -19,21 +34,11 @@ function Photos(props) {
     return <div className="preloader">Ожидайте</div>;
   }
 
-  let cardsArray = [];
-  for (let i = 0; i < props.photos.length; i++) {
-    cardsArray.push(
-      <Card
-        url={props.photos[i]['url']}
-        id={i}
-        title={props.photos[i]['title']}
-        callback={setPopUPStatus}
-      ></Card>
-    );
-  }
-
   return (
     <>
-      <div className="cards_container">{cardsArray}</div>
+      <div className="cards_container">
+        {getCardsArray(props.photos, setPopUPStatus)}
+      </div>
       {popUPStatus.displayed ? (
         <PhotoCarusel
           setPopUpStatus={setPopUPStatus}

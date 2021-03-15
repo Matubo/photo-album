@@ -21,8 +21,8 @@ function* fetchAutors(action) {
   yield put({ type: 'FINISHFETCHING' });
 }
 
-function* sage() {
+function* saga() {
   yield takeLatest('GETNEWAUTHORS', fetchAutors);
 }
 
-export default sage;
+export default saga;
