@@ -6,7 +6,6 @@ function PhotoCarusel(props) {
   let [currentPhotoId, setCurrentPhotoId] = useState(props.id);
 
   function nextPhoto() {
-    console.log('next ' + currentPhotoId);
     if (currentPhotoId < props.photos.length - 1) {
       setCurrentPhotoId(currentPhotoId + 1);
     } else {
@@ -15,7 +14,6 @@ function PhotoCarusel(props) {
   }
 
   function previousPhoto() {
-    console.log('prev ' + currentPhotoId);
     if (currentPhotoId > 0) {
       setCurrentPhotoId(currentPhotoId - 1);
     } else {
@@ -36,6 +34,7 @@ function PhotoCarusel(props) {
         src={props.photos[currentPhotoId]['url']}
         className="carusel_element"
         onClick={nextPhoto}
+        alt="error"
       ></img>
       <NextButton callback={nextPhoto}></NextButton>
       <PreviousButton callback={previousPhoto}></PreviousButton>

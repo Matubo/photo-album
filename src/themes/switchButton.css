@@ -1,4 +1,4 @@
-.next_button{
+.next_button,.previous_button{
     height: 100vh;
     position: absolute;
     top:0;
@@ -6,22 +6,19 @@
     align-items: center;
     background-color: rgba(0, 0, 0, 0.671);
     cursor: pointer;
+    -moz-user-select: none;
+ -webkit-user-select: none;
+  -ms-user-select: none;
+   user-select: none;
+}
+
+.previous_button{
+    left:0;
 }
 
 .next_button img, .previous_button img{
 height: 20px;
 margin: 15px;
-}
-
-.previous_button{
-    height: 100vh;
-    position: absolute;
-    left:0;
-    top:0;
-    display: flex;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.671);
-    cursor: pointer;
 }
 
 .previous_button img{
