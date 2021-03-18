@@ -40,11 +40,12 @@ function* fetchAlbums(action) {
           id: albumsData[i]['id'],
           title: albumsData[i]['title'],
           url: photosData[i][0]['thumbnailUrl'],
+          length: photosData[i].length,
         });
       }
     }
   }
-
+  console.log(formateAlbumsData);
   yield put({ type: 'SETNEWALBUMS', newAlbums: formateAlbumsData });
   yield put({ type: 'FINISHFETCHING' });
 }

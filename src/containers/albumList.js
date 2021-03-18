@@ -12,7 +12,7 @@ function getCardsArray(albums, callback) {
           url={albums[i]['url']}
           title={albums[i]['title']}
           callback={callback}
-          length={albums.length + 1}
+          length={albums[i]['length']}
         ></Card>
       </div>
     );
