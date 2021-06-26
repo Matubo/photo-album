@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import PhotoCard from '../components/photoCard/photoCard';
-import '../themes/albumList.css';
 
 function getCardsArray(albums, callback) {
   let array = [];

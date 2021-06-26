@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import CardWithoutBackground from '../components/authorCard/authorCard';
+import CardWithoutBackground from '../authorCard/authorCard';
 
-function getCardsArray(authors, callback) {
-  let array = [];
+function getCardsDOM(authors, callback) {
+  let DOMArray = [];
   for (let i = 0; i < authors.length; i++) {
-    array.push(
+    DOMArray.push(
       <CardWithoutBackground
         author={authors[i]['username']}
         authorId={authors[i]['id']}
@@ -12,18 +12,16 @@ function getCardsArray(authors, callback) {
       ></CardWithoutBackground>
     );
   }
-  return array;
+  return DOMArray;
 }
 
 function authors(props) {
-  if (props.fetching) {
-    return <div className="preloader">Ожидайте</div>;
-  }
+  const { fetching, authors, setNextStage } = props;
 
-  return (
-    <div className="cards_container">
-      {getCardsArray(props.authors, props.setNextStage)}
-    </div>
+  return fetching ? (
+    <div className="preloader">Ожидайте</div>
+  ) : (
+    <div className="cards_container">{getCardsDOM(authors, setNextStage)}</div>
   );
 }
 
