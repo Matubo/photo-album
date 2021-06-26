@@ -1,15 +1,39 @@
 {
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
   "extends": [
     "react-app",
     "prettier"
   ],
+  "plugins": [
+    "prettier"
+  ],
   "rules": {
+    "react/jsx-max-props-per-line": [
+      1,
+      {
+        "maximum": 4
+      }
+    ],
     "jsx-quotes": [
       1,
       "prefer-double"
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "endOfLine": "auto",
+        "printWidth": 80
+      }
     ]
-  },
-  "plugins": [
-    "prettier"
-  ]
+  }
 }
