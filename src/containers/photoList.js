@@ -1,18 +1,18 @@
 import { connect } from 'react-redux';
 import { useState } from 'react';
-import { CardWithBackground as Card } from '../components/card';
+import PhotoCard from '../components/photoCard/photoCard';
 import PhotoCarusel from './photoCarusel';
 
 function getCardsArray(photos, callback) {
   let array = [];
   for (let i = 0; i < photos.length; i++) {
     array.push(
-      <Card
+      <PhotoCard
         url={photos[i]['url']}
         id={i}
         title={photos[i]['title']}
         callback={callback}
-      ></Card>
+      ></PhotoCard>
     );
   }
   return array;
