@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
-import { CardWithoutBackground as Card } from '../components/card';
+import CardWithoutBackground from '../components/authorCard/authorCard';
 
 function getCardsArray(authors, callback) {
   let array = [];
   for (let i = 0; i < authors.length; i++) {
     array.push(
-      <Card
-        username={authors[i]['username']}
-        id={authors[i]['id']}
+      <CardWithoutBackground
+        author={authors[i]['username']}
+        authorId={authors[i]['id']}
         callback={callback}
-      ></Card>
+      ></CardWithoutBackground>
     );
   }
   return array;

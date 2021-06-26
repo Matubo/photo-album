@@ -30,6 +30,7 @@
     "prettier/prettier": [
       "error",
       {
+        "useTabs": false,
         "singleQuote": true,
         "endOfLine": "auto",
         "printWidth": 80

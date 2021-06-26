@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { CardWithBackground as Card } from '../components/card';
+import PhotoCard from '../components/photoCard/photoCard';
 import '../themes/albumList.css';
 
 function getCardsArray(albums, callback) {
@@ -7,13 +7,13 @@ function getCardsArray(albums, callback) {
   for (let i = 0; i < albums.length; i++) {
     array.push(
       <div>
-        <Card
+        <PhotoCard
           id={albums[i]['id']}
           url={albums[i]['url']}
           title={albums[i]['title']}
           callback={callback}
           length={albums[i]['length']}
-        ></Card>
+        ></PhotoCard>
       </div>
     );
   }

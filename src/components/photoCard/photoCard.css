@@ -1,4 +1,4 @@
-.card, .card_author{
+.card{
     width:200px;
     min-height: 200px;
     background-color: bisque;
@@ -9,29 +9,21 @@
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     cursor: pointer;
 }
-.card_author{
-    display:flex;
-    flex-direction: column;  
-    align-items: center;  
-}
 .card p{
     display:block;
     text-align: center;
     cursor:default;
 }
-.card_author_name{
-    margin:auto;
-}
-.card_title{
+.card__title{
     margin:5px;
 }
-.card_img{ 
+.card__img{ 
     height: 200px;
     width:200px;
     background-size: cover;
 }
 
-.card_length{
+.card__length{
     position: absolute;
     top:0;
     right: 0;
@@ -39,3 +31,11 @@
     color: black;
     font-size: 1.5em;
 }
+
+.card__img-active{
+    height: 200px;
+    width:200px;
+    background-size: cover;
+    filter: opacity(70%);
+    transition:0.5s;}
+.card__img-active:hover{filter: opacity(100%);}
