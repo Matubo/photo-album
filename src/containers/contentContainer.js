@@ -4,7 +4,7 @@ import albumStore from '../stores/albumStore';
 import photoStore from '../stores/photoStore';
 import '../themes/cardsContainer.css';
 import StagePanel from '../components/stagePanel';
-import AuthorList from './authorList';
+import ListOfAuthors from '../components/listOfAuthors/listOfAuthors';
 import AlbumList from './albumList';
 import PhotoList from './photoList';
 
@@ -29,10 +29,10 @@ function Container(props) {
 
   if (viewingStage == 1) {
     return (
-      <AuthorList
+      <ListOfAuthors
         store={authorStore}
         setNextStage={setAlbumsStage}
-      ></AuthorList>
+      ></ListOfAuthors>
     );
   }
 
