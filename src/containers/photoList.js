@@ -1,4 +1,3 @@
-import { connect } from 'react-redux';
 import { useState } from 'react';
 import PhotoCard from '../components/photoCard/photoCard';
 import PhotoCarusel from './photoCarusel';
@@ -60,4 +59,4 @@ function stateMap(state) {
   };
 }
 
-export default connect(stateMap)(Photos);
+export default Photos /* connect(stateMap)(Photos) */;

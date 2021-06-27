@@ -1,41 +1,47 @@
-.card{
-    width:200px;
-    min-height: 200px;
-    background-color: bisque;
-    margin:20px;
-    background: #ececec;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.35);
-    position: relative;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    cursor: pointer;
+.photo_card{
+    background-color: #e7e3e4;
 }
 .card p{
     display:block;
     text-align: center;
     cursor:default;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; 
+    overflow: hidden;
 }
 .card__title{
-    margin:5px;
+    margin:0;
+    margin-left:5px;
+    margin-right:5px;
+    font-weight: normal;
+    font-size: x-large;
 }
 .card__img{ 
-    height: 200px;
-    width:200px;
+    height: 190px;
+    width:190px;
+    margin: 5px;
     background-size: cover;
 }
 
 .card__length{
     position: absolute;
     top:0;
-    right: 0;
+    right: 10px;
     margin:10px;
     color: black;
     font-size: 1.5em;
 }
 
 .card__img-active{
-    height: 200px;
-    width:200px;
+    height: 190px;
+    width:190px;
+    margin: 5px;
     background-size: cover;
     filter: opacity(70%);
-    transition:0.5s;}
-.card__img-active:hover{filter: opacity(100%);}
+    transition:0.5s;
+}
+
+.card__img-active:hover{
+    filter: opacity(100%);
+}

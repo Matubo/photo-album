@@ -15,9 +15,8 @@ function getCardsDOM(authors, callback) {
   return DOMArray;
 }
 
-function authors(props) {
+function Authors(props) {
   const { fetching, authors, setNextStage } = props;
-
   return fetching ? (
     <div className="preloader">Ожидайте</div>
   ) : (
@@ -33,4 +32,4 @@ function stateMap(state) {
   };
 }
 
-export default connect(stateMap)(authors);
+export default Authors /* connect(stateMap)(Authors) */;

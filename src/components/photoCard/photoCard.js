@@ -4,7 +4,7 @@ function PhotoCard(props) {
   const { length, callback, url, id, title } = props;
   if (length) {
     return (
-      <div className="card">
+      <div className="card photo_card">
         <div className="card__length">{length}</div>
         <div
           className="card__img-active"
@@ -15,12 +15,14 @@ function PhotoCard(props) {
             callback(id);
           }}
         ></div>
-        <p className="card__title">{title}</p>
+        <p className="card__title" title={title}>
+          {title}
+        </p>
       </div>
     );
   } else {
     return (
-      <div className="card">
+      <div className="card photo_card">
         <div
           className="card__img"
           style={{
@@ -30,7 +32,9 @@ function PhotoCard(props) {
             callback(id);
           }}
         ></div>
-        <p className="card__title">{title}</p>
+        <p className="card__title" title={title}>
+          {title}
+        </p>
       </div>
     );
   }

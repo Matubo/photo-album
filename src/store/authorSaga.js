@@ -1,11 +1,10 @@
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
-import getAutors from '../requests/getAuthors';
-// воркер Saga: будет запускаться на действия типа `USER_FETCH_REQUESTED`
+import { call, put } from 'redux-saga/effects';
+import getAuthors from '../requests/getAuthors';
 
-function* fetchAutors(action) {
+function* fetchAuthors(action) {
   yield put({ type: 'STARTFETCHING' });
   let authorGetResult = yield call(() => {
-    return getAutors();
+    return getAuthors();
   });
   let formateResult = [];
   if (!authorGetResult.error) {
@@ -21,8 +20,4 @@ function* fetchAutors(action) {
   yield put({ type: 'FINISHFETCHING' });
 }
 
-function* saga() {
-  yield takeLatest('GETNEWAUTHORS', fetchAutors);
-}
-
-export default saga;
+export default fetchAuthors;
