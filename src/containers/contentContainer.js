@@ -5,7 +5,7 @@ import photoStore from '../stores/photoStore';
 import '../themes/cardsContainer.css';
 import StagePanel from '../components/stagePanel';
 import ListOfAuthors from '../components/listOfAuthors/listOfAuthors';
-import AlbumList from './albumList';
+import ListOfAlbums from '../components/listOfAlbums/listOfAlbums';
 import PhotoList from './photoList';
 
 function Container(props) {
@@ -43,7 +43,10 @@ function Container(props) {
           setPreviousStage={setPreviousStage}
           name="Albums"
         ></StagePanel>
-        <AlbumList store={albumStore} setNextStage={setPhotosStage}></AlbumList>
+        <ListOfAlbums
+          store={albumStore}
+          setNextStage={setPhotosStage}
+        ></ListOfAlbums>
       </>
     );
   }
