@@ -1,20 +1,21 @@
 import '../themes/baseContainer.css';
-import authorStore from '../stores/authorStore';
+import store from '../store/store';
 import ContentContainer from './contentContainer';
 import React, { useState, useEffect } from 'react';
 import preloaderIMG from '../img/preloader.png';
 
 function ContainerTemplate() {
   let [preloaderStatus, setPreloaderStatus] = useState({ displayed: true });
+  let [viewingStage, setViewingStage] = useState(1);
   useEffect(() => {
-    authorStore.dispatch({ type: 'GETNEWAUTHORS' });
+    store.dispatch({ type: 'GETNEWAUTHORS' });
   }, []);
 
-  authorStore.subscribe(() => {
-    if (!authorStore.getState().fetching) {
+  store.subscribe(() => {
+    if (!store.getState().fetching) {
       setPreloaderStatus({ displayed: false });
     }
-    if (authorStore.getState().fetching) {
+    if (store.getState().fetching) {
       setPreloaderStatus({ displayed: true });
     }
   });
@@ -28,7 +29,10 @@ function ContainerTemplate() {
       <div className="main_heading">
         <p className="main_heading_name">PhotoGallery</p>
       </div>
-      <ContentContainer></ContentContainer>
+      <ContentContainer
+        viewingStage={viewingStage}
+        setViewingStage={setViewingStage}
+      ></ContentContainer>
     </div>
   );
 }

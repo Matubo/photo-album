@@ -1,6 +1,5 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 import getPhotos from '../requests/getPhotos';
-// воркер Saga: будет запускаться на действия типа `USER_FETCH_REQUESTED`
 
 function* fetchPhotos(action) {
   yield put({ type: 'STARTFETCHING' });
@@ -31,8 +30,4 @@ function* fetchPhotos(action) {
   yield put({ type: 'FINISHFETCHING' });
 }
 
-function* saga() {
-  yield takeLatest('GETNEWPHOTOS', fetchPhotos);
-}
-
-export default saga;
+export default fetchPhotos;

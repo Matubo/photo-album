@@ -1,38 +1,49 @@
 import { React, useState } from 'react';
-import authorStore from '../stores/authorStore';
-import albumStore from '../stores/albumStore';
-import photoStore from '../stores/photoStore';
+import { connect } from 'redux';
 import '../themes/cardsContainer.css';
 import StagePanel from '../components/stagePanel';
 import ListOfAuthors from '../components/listOfAuthors/listOfAuthors';
 import ListOfAlbums from '../components/listOfAlbums/listOfAlbums';
 import PhotoList from './photoList';
+import store from '../store/store';
 
 function Container(props) {
   let [viewingStage, setViewingStage] = useState(1);
 
   function setAlbumsStage(id) {
-    albumStore.dispatch({ type: 'GETNEWALBUMS', id: id });
+    store.dispatch({ type: 'GETNEWALBUMS', id: id });
     setViewingStage(2);
+    console.log(viewingStage);
   }
 
   function setPhotosStage(id) {
-    photoStore.dispatch({ type: 'GETNEWPHOTOS', id: id });
+    store.dispatch({ type: 'GETNEWPHOTOS', id: id });
     setViewingStage(3);
+    console.log(viewingStage);
   }
 
   function setPreviousStage() {
     if (viewingStage > 1) {
       setViewingStage(viewingStage - 1);
     }
+    console.log(viewingStage);
   }
 
   if (viewingStage == 1) {
     return (
-      <ListOfAuthors
-        store={authorStore}
-        setNextStage={setAlbumsStage}
-      ></ListOfAuthors>
+      <>
+        <ListOfAuthors
+          store={store}
+          setNextStage={setAlbumsStage}
+        ></ListOfAuthors>
+        <button
+          onClick={() => {
+            store.dispatch({ type: 'GETNEWAUTHORS' });
+          }}
+        >
+          TEST
+        </button>
+      </>
     );
   }
 
@@ -44,7 +55,7 @@ function Container(props) {
           name="Albums"
         ></StagePanel>
         <ListOfAlbums
-          store={albumStore}
+          store={store}
           setNextStage={setPhotosStage}
         ></ListOfAlbums>
       </>
@@ -58,7 +69,7 @@ function Container(props) {
           setPreviousStage={setPreviousStage}
           name="Photos"
         ></StagePanel>
-        <PhotoList store={photoStore}></PhotoList>
+        <PhotoList store={store}></PhotoList>
       </>
     );
   }

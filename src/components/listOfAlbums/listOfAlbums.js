@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import stateMap from './listOfAlbumsStateMap';
+/* import stateMap from './listOfAlbumsStateMap'; */
 import PhotoCard from '../photoCard/photoCard';
 import './listOfAlbums.css';
 
@@ -18,6 +18,7 @@ function getCardsDOMArray(albums, callback) {
       </div>
     );
   }
+  console.log(DOMArray);
   return DOMArray;
 }
 
@@ -30,6 +31,14 @@ function Albums(props) {
       {getCardsDOMArray(albums, setNextStage)}
     </div>
   );
+}
+
+function stateMap(state) {
+  return {
+    albums: state.albums,
+    fetching: state.fetching,
+    title: state.title,
+  };
 }
 
 export default connect(stateMap)(Albums);

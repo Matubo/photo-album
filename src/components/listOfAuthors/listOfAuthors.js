@@ -17,7 +17,6 @@ function getCardsDOM(authors, callback) {
 
 function authors(props) {
   const { fetching, authors, setNextStage } = props;
-
   return fetching ? (
     <div className="preloader">Ожидайте</div>
   ) : (

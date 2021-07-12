@@ -1,13 +1,8 @@
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 import getAlbums from '../requests/getAlbums';
 import getPhotos from '../requests/getPhotos';
-// воркер Saga: будет запускаться на действия типа `USER_FETCH_REQUESTED`
 
-function* fetchAlbums(action) {
-  yield put({ type: 'STARTFETCHING' });
-  let albumGetResult = yield call(() => {
-    return getAlbums(action.id);
-  });
+function* formateData(albumGetResult) {
   let formateAlbumsData = [];
   if (albumGetResult.error) {
     yield put({ type: 'SETFETCHINGERROR' });
@@ -33,7 +28,7 @@ function* fetchAlbums(action) {
       });
     } else {
       let photosData = photoGetResult.result;
-      console.log('url list' + photoGetResult);
+      console.log(photoGetResult);
       for (let i = 0; i < albumsData.length; i++) {
         formateAlbumsData.push({
           userId: albumsData[i]['userId'],
@@ -45,13 +40,22 @@ function* fetchAlbums(action) {
       }
     }
   }
-  console.log(formateAlbumsData);
+
+  return formateAlbumsData;
+}
+
+function* fetchAlbums(action) {
+  const { id } = action;
+  yield put({ type: 'STARTFETCHING' });
+  let albumGetResult = yield call(() => {
+    return getAlbums(id);
+  });
+  let formateAlbumsData = yield call(() => {
+    return formateData(albumGetResult);
+  });
   yield put({ type: 'SETNEWALBUMS', newAlbums: formateAlbumsData });
   yield put({ type: 'FINISHFETCHING' });
+  yield put({ type: 'TEST' });
 }
 
-function* sage() {
-  yield takeLatest('GETNEWALBUMS', fetchAlbums);
-}
-
-export default sage;
+export default fetchAlbums;

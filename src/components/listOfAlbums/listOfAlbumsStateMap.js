@@ -1,6 +1,6 @@
 function stateMap(state) {
   return {
-    albums: state.albums,
+    albums: state.data.albums,
     fetching: state.fetching,
     title: state.title,
   };
