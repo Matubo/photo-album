@@ -37,8 +37,7 @@ function stateMap(state) {
   return {
     albums: state.albums,
     fetching: state.fetching,
-    title: state.title,
   };
 }
 
-export default connect(stateMap)(Albums);
+export default Albums /* connect(stateMap)(Albums) */;

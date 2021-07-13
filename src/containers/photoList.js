@@ -60,4 +60,4 @@ function stateMap(state) {
   };
 }
 
-export default connect(stateMap)(Photos);
+export default Photos /* connect(stateMap)(Photos) */;

@@ -1,8 +1,8 @@
 import '../themes/baseContainer.css';
-import store from '../store/store';
 import ContentContainer from './contentContainer';
 import React, { useState, useEffect } from 'react';
 import preloaderIMG from '../img/preloader.png';
+import store from '../store/store';
 
 function ContainerTemplate() {
   let [preloaderStatus, setPreloaderStatus] = useState({ displayed: true });
@@ -30,8 +30,9 @@ function ContainerTemplate() {
         <p className="main_heading_name">PhotoGallery</p>
       </div>
       <ContentContainer
-        viewingStage={viewingStage}
-        setViewingStage={setViewingStage}
+        stage={viewingStage}
+        setStage={setViewingStage}
+        store={store}
       ></ContentContainer>
     </div>
   );
