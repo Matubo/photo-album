@@ -5,28 +5,22 @@ import StagePanel from '../components/stagePanel';
 import ListOfAuthors from '../components/listOfAuthors/listOfAuthors';
 import ListOfAlbums from '../components/listOfAlbums/listOfAlbums';
 import PhotoList from './photoList';
-
+import preloaderIMG from '../img/preloader.png';
 function Container(props) {
   /* let [stage, setstage] = useState(1); */
-  let { stage, setStage, authors, albums, photos, getPhotos, getAlbums } =
-    props;
-  function setAlbumsStage(id) {
-    getAlbums(id);
-    setStage(2);
-    console.log(stage);
-  }
+  let {
+    stage,
+    fetching,
+    authors,
+    albums,
+    photos,
+    setPhotosStage,
+    setAlbumsStage,
+    setPreviousStage,
+  } = props;
 
-  function setPhotosStage(id) {
-    getPhotos(id);
-    setStage(3);
-    console.log(stage);
-  }
-
-  function setPreviousStage() {
-    if (stage > 1) {
-      setStage(stage - 1);
-    }
-    console.log(stage);
+  if (fetching) {
+    return <img src={preloaderIMG} className="preloader_img"></img>;
   }
 
   if (stage == 1) {
@@ -70,17 +64,20 @@ function Container(props) {
 
 function stateMap(store) {
   return {
+    stage: store.stage,
     authors: store.authors,
     albums: store.albums,
     photos: store.photos,
     fetching: store.fetching,
+    store: store,
   };
 }
 
 function dispatchMap(dispatch) {
   return {
-    getPhotos: (id) => dispatch({ type: 'GETNEWPHOTOS', id: id }),
-    getAlbums: (id) => dispatch({ type: 'GETNEWALBUMS', id: id }),
+    setPhotosStage: (id) => dispatch({ type: 'GETNEWPHOTOS', id: id }),
+    setAlbumsStage: (id) => dispatch({ type: 'GETNEWALBUMS', id: id }),
+    setPreviousStage: (id) => dispatch({ type: 'SETPREVIOUSSTAGE' }),
   };
 }
 

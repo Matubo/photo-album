@@ -27,6 +27,7 @@ function* fetchPhotos(action) {
   }
   console.log(formateData);
   yield put({ type: 'SETNEWPHOTOS', newPhotos: formateData });
+  yield put({ type: 'SETSTAGE', newStage: 3 });
   yield put({ type: 'FINISHFETCHING' });
 }
 
