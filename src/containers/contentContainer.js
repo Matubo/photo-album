@@ -1,4 +1,4 @@
-import { React } from 'react';
+import { React, useEffect } from 'react';
 import { connect } from 'react-redux';
 import '../themes/cardsContainer.css';
 import StagePanel from '../components/stagePanel';
@@ -6,21 +6,34 @@ import ListOfAuthors from '../components/listOfAuthors/listOfAuthors';
 import ListOfAlbums from '../components/listOfAlbums/listOfAlbums';
 import PhotoList from './photoList';
 import preloaderIMG from '../img/preloader.png';
+
 function Container(props) {
-  /* let [stage, setstage] = useState(1); */
-  let {
+  const {
     stage,
     fetching,
     authors,
     albums,
     photos,
+    setAuthorsStage,
     setPhotosStage,
     setAlbumsStage,
     setPreviousStage,
   } = props;
 
+  useEffect(() => {
+    setAuthorsStage();
+  }, []);
+
   if (fetching) {
-    return <img src={preloaderIMG} className="preloader_img"></img>;
+    return (
+      <div className="preloader">
+        <img
+          src={preloaderIMG}
+          className="preloader_img"
+          alt="Загрузка..."
+        ></img>
+      </div>
+    );
   }
 
   if (stage == 1) {
@@ -69,7 +82,6 @@ function stateMap(store) {
     albums: store.albums,
     photos: store.photos,
     fetching: store.fetching,
-    store: store,
   };
 }
 
@@ -77,7 +89,8 @@ function dispatchMap(dispatch) {
   return {
     setPhotosStage: (id) => dispatch({ type: 'GETNEWPHOTOS', id: id }),
     setAlbumsStage: (id) => dispatch({ type: 'GETNEWALBUMS', id: id }),
-    setPreviousStage: (id) => dispatch({ type: 'SETPREVIOUSSTAGE' }),
+    setAuthorsStage: () => dispatch({ type: 'GETNEWAUTHORS' }),
+    setPreviousStage: () => dispatch({ type: 'SETPREVIOUSSTAGE' }),
   };
 }
 

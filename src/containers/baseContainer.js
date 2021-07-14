@@ -1,7 +1,6 @@
 import '../themes/baseContainer.css';
 import ContentContainer from './contentContainer';
-import React, { useState, useEffect } from 'react';
-import preloaderIMG from '../img/preloader.png';
+import React from 'react';
 import store from '../store/store';
 
 function ContainerTemplate() {
