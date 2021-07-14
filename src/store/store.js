@@ -2,8 +2,12 @@ import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import saga from './saga';
 
-function storeReducer(
+function store(
   state = {
+    stage: 1,
+    albums: null,
+    authors: null,
+    photos: null,
     fetching: true,
     fetchingError: false,
   },
@@ -23,7 +27,6 @@ function storeReducer(
       fetchingError: true,
     };
   }
-
   if (action.type == 'FINISHFETCHING') {
     return {
       ...state,
@@ -38,11 +41,8 @@ function storeReducer(
     };
   }
 
-  if (action.type == 'SETNEWPHOTOS') {
-    return {
-      ...state,
-      photos: action.newPhotos,
-    };
+  if (action.type == 'GETNEWALBUMS') {
+    return state;
   }
 
   if (action.type == 'SETNEWAUTHORS') {
@@ -52,15 +52,30 @@ function storeReducer(
     };
   }
 
-  if (action.type == 'GETNEWALBUMS') {
+  if (action.type == 'GETNEWAUTHORS') {
     return state;
   }
+  if (action.type == 'SETNEWPHOTOS') {
+    return {
+      ...state,
+      photos: action.newPhotos,
+    };
+  }
 
+  if (action.type == 'GETNEWPHOTOS') {
+    return state;
+  }
+  if (action.type == 'SETSTAGE') {
+    return {
+      ...state,
+      stage: action.newStage,
+    };
+  }
   return state;
 }
 
 const sagaMiddleware = createSagaMiddleware();
-const store = createStore(storeReducer, applyMiddleware(sagaMiddleware));
+const Store = createStore(store, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(saga);
 
-export default store;
+export default Store;

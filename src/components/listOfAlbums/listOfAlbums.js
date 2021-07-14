@@ -7,15 +7,13 @@ function getCardsDOMArray(albums, callback) {
   let DOMArray = [];
   for (let i = 0; i < albums.length; i++) {
     DOMArray.push(
-      <div>
-        <PhotoCard
-          id={albums[i]['id']}
-          url={albums[i]['url']}
-          title={albums[i]['title']}
-          callback={callback}
-          length={albums[i]['length']}
-        ></PhotoCard>
-      </div>
+      <PhotoCard
+        id={albums[i]['id']}
+        url={albums[i]['url']}
+        title={albums[i]['title']}
+        callback={callback}
+        length={albums[i]['length']}
+      ></PhotoCard>
     );
   }
   console.log(DOMArray);
@@ -37,8 +35,7 @@ function stateMap(state) {
   return {
     albums: state.albums,
     fetching: state.fetching,
-    title: state.title,
   };
 }
 
-export default connect(stateMap)(Albums);
+export default Albums /* connect(stateMap)(Albums) */;

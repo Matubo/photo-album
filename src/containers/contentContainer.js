@@ -1,53 +1,53 @@
-import { React, useState } from 'react';
-import { connect } from 'redux';
+import { React, useEffect } from 'react';
+import { connect } from 'react-redux';
 import '../themes/cardsContainer.css';
 import StagePanel from '../components/stagePanel';
 import ListOfAuthors from '../components/listOfAuthors/listOfAuthors';
 import ListOfAlbums from '../components/listOfAlbums/listOfAlbums';
 import PhotoList from './photoList';
-import store from '../store/store';
+import preloaderIMG from '../img/preloader.png';
 
 function Container(props) {
-  let [viewingStage, setViewingStage] = useState(1);
+  const {
+    stage,
+    fetching,
+    authors,
+    albums,
+    photos,
+    setAuthorsStage,
+    setPhotosStage,
+    setAlbumsStage,
+    setPreviousStage,
+  } = props;
 
-  function setAlbumsStage(id) {
-    store.dispatch({ type: 'GETNEWALBUMS', id: id });
-    setViewingStage(2);
-    console.log(viewingStage);
+  useEffect(() => {
+    setAuthorsStage();
+  }, []);
+
+  if (fetching) {
+    return (
+      <div className="preloader">
+        <img
+          src={preloaderIMG}
+          className="preloader_img"
+          alt="Загрузка..."
+        ></img>
+      </div>
+    );
   }
 
-  function setPhotosStage(id) {
-    store.dispatch({ type: 'GETNEWPHOTOS', id: id });
-    setViewingStage(3);
-    console.log(viewingStage);
-  }
-
-  function setPreviousStage() {
-    if (viewingStage > 1) {
-      setViewingStage(viewingStage - 1);
-    }
-    console.log(viewingStage);
-  }
-
-  if (viewingStage == 1) {
+  if (stage == 1) {
     return (
       <>
         <ListOfAuthors
-          store={store}
+          authors={authors}
           setNextStage={setAlbumsStage}
         ></ListOfAuthors>
-        <button
-          onClick={() => {
-            store.dispatch({ type: 'GETNEWAUTHORS' });
-          }}
-        >
-          TEST
-        </button>
       </>
     );
   }
 
-  if (viewingStage == 2) {
+  if (stage == 2) {
     return (
       <>
         <StagePanel
@@ -55,24 +55,43 @@ function Container(props) {
           name="Albums"
         ></StagePanel>
         <ListOfAlbums
-          store={store}
+          albums={albums}
           setNextStage={setPhotosStage}
         ></ListOfAlbums>
       </>
     );
   }
 
-  if (viewingStage == 3) {
+  if (stage == 3) {
     return (
       <>
         <StagePanel
           setPreviousStage={setPreviousStage}
           name="Photos"
         ></StagePanel>
-        <PhotoList store={store}></PhotoList>
+        <PhotoList photos={photos}></PhotoList>
       </>
     );
   }
 }
 
-export default Container;
+function stateMap(store) {
+  return {
+    stage: store.stage,
+    authors: store.authors,
+    albums: store.albums,
+    photos: store.photos,
+    fetching: store.fetching,
+  };
+}
+
+function dispatchMap(dispatch) {
+  return {
+    setPhotosStage: (id) => dispatch({ type: 'GETNEWPHOTOS', id: id }),
+    setAlbumsStage: (id) => dispatch({ type: 'GETNEWALBUMS', id: id }),
+    setAuthorsStage: () => dispatch({ type: 'GETNEWAUTHORS' }),
+    setPreviousStage: () => dispatch({ type: 'SETPREVIOUSSTAGE' }),
+  };
+}
+
+export default connect(stateMap, dispatchMap)(Container);

@@ -1,16 +1,39 @@
 .card{
+    position:relative;  
     width:200px;
     min-height: 200px;
     display:flex;
     flex-direction: column;  
     align-items: center;
-    background-color: bisque;
     margin:20px;
-    background: #ececec;
+    background-color: #FFC;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.35);
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     cursor: pointer;
+    transition: .15s linear;
 }
+.card:hover:nth-child(n){
+    transform: scale(1.1);
+}
+ .card:nth-child(even){  
+    transform:rotate(4deg);  
+    position:relative;  
+    top:5px;  
+    background-color: #FFC;
+  }  
+  .card:nth-child(3n){  
+    transform:rotate(-3deg);
+    position:relative;  
+    top:-5px;  
+    background-color: #FFC;
+  }  
+  .card:nth-child(5n){    
+    transform:rotate(5deg);  
+    position:relative;  
+    top:-10px;  
+    background-color: #FFC;
+  }
+
 .card__author-name{
     margin:auto;
 }

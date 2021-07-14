@@ -54,8 +54,8 @@ function* fetchAlbums(action) {
     return formateData(albumGetResult);
   });
   yield put({ type: 'SETNEWALBUMS', newAlbums: formateAlbumsData });
+  yield put({ type: 'SETSTAGE', newStage: 2 });
   yield put({ type: 'FINISHFETCHING' });
-  yield put({ type: 'TEST' });
 }
 
 export default fetchAlbums;
