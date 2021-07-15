@@ -1,11 +1,17 @@
 .content_heading{
     position: relative;
-  
-    background: linear-gradient(#B1B1B1 0%, #9c9c9c 100%);
+    background:linear-gradient(#8a898e 0%, #848189 100%);
     margin:0;
     height: 30px;
 }
-.content_heading_button{cursor: pointer;height: 20px; margin:5px; position: absolute;left:0;top:0;}
+.content_heading_button{
+    cursor: pointer;
+    height: 20px; 
+    margin:5px; 
+    position: absolute;
+    left:0;
+    top:0;
+}
 .content_heading_name{
     margin:auto;
     font-size: 20px;
