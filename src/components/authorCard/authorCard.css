@@ -20,14 +20,12 @@
  .card:nth-child(even){  
     transform:rotate(4deg);  
     position:relative;  
-    top:5px;  
-    
+    top:5px;
   }  
   .card:nth-child(3n){  
     transform:rotate(-3deg);
     position:relative;  
     top:-5px;  
-    
   }  
   .card:nth-child(5n){    
     transform:rotate(5deg);  
