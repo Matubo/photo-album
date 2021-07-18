@@ -7,7 +7,7 @@ function ContainerTemplate() {
   return (
     <div className="main">
       <div className="main_heading">
-        <p className="main_heading_name">PhotoGallery</p>
+        <p className="main_heading_name">Gallery</p>
       </div>
       <ContentContainer store={store}></ContentContainer>
     </div>
