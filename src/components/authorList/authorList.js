@@ -1,4 +1,3 @@
-import { connect } from 'react-redux';
 import CardWithoutBackground from '../authorCard/authorCard';
 
 function getCardsDOM(authors, callback) {
@@ -20,16 +19,8 @@ function Authors(props) {
   return fetching ? (
     <div className="preloader">Ожидайте</div>
   ) : (
-    <div className="cards_container">{getCardsDOM(authors, setNextStage)}</div>
+    getCardsDOM(authors, setNextStage)
   );
 }
 
-function stateMap(state) {
-  return {
-    authors: state.authors,
-    id: state.id,
-    fetching: state.fetching,
-  };
-}
-
-export default Authors /* connect(stateMap)(Authors) */;
+export default Authors;
