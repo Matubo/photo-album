@@ -1,8 +1,10 @@
 .photo_card{
-    background-color: #e7e3e4;
+    background-color: #e7e7e7;
+    border-radius: 3px 3px 3px 3px;
 }
 .card p{
     display:block;
+    min-height: 60px;
     text-align: center;
     cursor:default;
     display: -webkit-box;
@@ -18,9 +20,9 @@
     font-size: x-large;
 }
 .card__img{ 
-    height: 190px;
-    width:190px;
-    margin: 5px;
+    height: 180px;
+    width:180px;
+    margin: 10px;
     background-size: cover;
 }
 
@@ -34,9 +36,6 @@
 }
 
 .card__img-active{
-    height: 190px;
-    width:190px;
-    margin: 5px;
     background-size: cover;
     filter: opacity(70%);
     transition:0.5s;
