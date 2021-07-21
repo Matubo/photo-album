@@ -7,7 +7,6 @@ function AuthorCard(props) {
       className="card"
       onClick={() => {
         callback(authorId);
-        console.log('next');
       }}
     >
       <p className="card__author-name">{author}</p>
