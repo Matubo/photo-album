@@ -1,23 +1,24 @@
 import { useState } from 'react';
-import PhotoCard from '../photoCard/photoCard';
+import CardWithPhoto from '../cardWithPhoto/cardWithPhoto';
 import PhotoCarusel from '../photoCarousel/photoCarousel';
 
 function getCardsArray(photos, callback) {
   let array = [];
   for (let i = 0; i < photos.length; i++) {
     array.push(
-      <PhotoCard
+      <CardWithPhoto
         url={photos[i]['url']}
         id={i}
         title={photos[i]['title']}
         callback={callback}
-      ></PhotoCard>
+      ></CardWithPhoto>
     );
   }
   return array;
 }
 
 function Photos(props) {
+  const { photos } = props;
   let [popUPStatus, setPopUPStatus] = useState({ displayed: false, id: 0 });
 
   function changePopUPStatus(id = 0) {
@@ -29,17 +30,13 @@ function Photos(props) {
     }
   }
 
-  if (props.fetching) {
-    return <div className="preloader">Ожидайте</div>;
-  }
-
   return (
     <>
-      {getCardsArray(props.photos, changePopUPStatus)}
+      {getCardsArray(photos, changePopUPStatus)}
       {popUPStatus.displayed ? (
         <PhotoCarusel
           changePopUPStatus={changePopUPStatus}
-          photos={props.photos}
+          photos={photos}
           id={popUPStatus.id}
         ></PhotoCarusel>
       ) : (
