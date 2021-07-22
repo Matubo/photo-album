@@ -3,10 +3,11 @@ import { useState } from 'react';
 import { NextButton, PreviousButton } from '../switchButton/switchButton';
 
 function PhotoCarousel(props) {
-  let [currentPhotoId, setCurrentPhotoId] = useState(props.id);
+  const { id, photos, changePopUPStatus } = props;
+  let [currentPhotoId, setCurrentPhotoId] = useState(id);
 
   function nextPhoto() {
-    if (currentPhotoId < props.photos.length - 1) {
+    if (currentPhotoId < photos.length - 1) {
       setCurrentPhotoId(currentPhotoId + 1);
     } else {
       setCurrentPhotoId(0);
@@ -17,7 +18,7 @@ function PhotoCarousel(props) {
     if (currentPhotoId > 0) {
       setCurrentPhotoId(currentPhotoId - 1);
     } else {
-      setCurrentPhotoId(props.photos.length - 1);
+      setCurrentPhotoId(photos.length - 1);
     }
   }
 
@@ -26,19 +27,19 @@ function PhotoCarousel(props) {
       className="carousel_body"
       onClick={(e) => {
         if (e.target.className == 'carousel_body') {
-          props.changePopUPStatus();
+          changePopUPStatus();
         }
       }}
     >
       <img
-        src={props.photos[currentPhotoId]['url']}
+        src={photos[currentPhotoId]['url']}
         className="carousel_element"
         onClick={nextPhoto}
         alt="error"
       ></img>
       <NextButton callback={nextPhoto}></NextButton>
       <PreviousButton callback={previousPhoto}></PreviousButton>
-      <p className="carousel_title">{props.photos[currentPhotoId]['title']}</p>
+      <p className="carousel_title">{photos[currentPhotoId]['title']}</p>
     </div>
   );
 }

@@ -3,6 +3,8 @@ import switch_arrow from '../../assets/img/switch_arrow.png';
 import './switchButton.css';
 
 function NextButton(props) {
+  const { callback } = props;
+
   let [scrollBarIndent, setScrollBarIndent] = useState({
     right: '0px',
   });
@@ -24,11 +26,7 @@ function NextButton(props) {
   };
 
   return (
-    <div
-      className="next_button"
-      style={scrollBarIndent}
-      onClick={props.callback}
-    >
+    <div className="next_button" style={scrollBarIndent} onClick={callback}>
       <img src={switch_arrow}></img>
     </div>
   );

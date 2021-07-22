@@ -1,6 +1,6 @@
-import PhotoCard from '../photoCard/photoCard';
+import PhotoCard from '../cardWithPhoto/cardWithPhoto';
 
-function getCardsDOMArray(albums, callback) {
+function getCardsDOM(albums, callback) {
   let DOMArray = [];
   for (let i = 0; i < albums.length; i++) {
     DOMArray.push(
@@ -18,7 +18,7 @@ function getCardsDOMArray(albums, callback) {
 
 function Albums(props) {
   const { albums, setNextStage } = props;
-  return getCardsDOMArray(albums, setNextStage);
+  return getCardsDOM(albums, setNextStage);
 }
 
 export default Albums;

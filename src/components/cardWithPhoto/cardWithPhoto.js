@@ -1,4 +1,4 @@
-import './photoCard.css';
+import './cardWithPhoto.css';
 
 function PhotoCard(props) {
   const { length, callback, url, id, title } = props;
