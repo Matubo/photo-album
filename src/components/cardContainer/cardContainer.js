@@ -1,11 +1,11 @@
 import { React, useEffect } from 'react';
 import { connect } from 'react-redux';
-import '../themes/cardsContainer.css';
-import StagePanel from '../components/stagePanel';
-import ListOfAuthors from '../components/listOfAuthors/listOfAuthors';
-import ListOfAlbums from '../components/listOfAlbums/listOfAlbums';
-import PhotoList from './photoList';
-import preloaderIMG from '../img/preloader.png';
+import './cardContainer.css';
+import StagePanel from '../stagePanel/stagePanel';
+import AuthorList from '../authorList/authorList';
+import AlbumsList from '../albumList/albumList';
+import PhotoList from '../photoList/photoList';
+import preloaderIMG from '../../assets/img/preloader.png';
 
 function Container(props) {
   const {
@@ -38,12 +38,12 @@ function Container(props) {
 
   if (stage == 1) {
     return (
-      <>
-        <ListOfAuthors
+      <div className="card_container">
+        <AuthorList
           authors={authors}
           setNextStage={setAlbumsStage}
-        ></ListOfAuthors>
-      </>
+        ></AuthorList>
+      </div>
     );
   }
 
@@ -54,10 +54,12 @@ function Container(props) {
           setPreviousStage={setPreviousStage}
           name="Albums"
         ></StagePanel>
-        <ListOfAlbums
-          albums={albums}
-          setNextStage={setPhotosStage}
-        ></ListOfAlbums>
+        <div className="card_container">
+          <AlbumsList
+            albums={albums}
+            setNextStage={setPhotosStage}
+          ></AlbumsList>
+        </div>
       </>
     );
   }
@@ -69,7 +71,9 @@ function Container(props) {
           setPreviousStage={setPreviousStage}
           name="Photos"
         ></StagePanel>
-        <PhotoList photos={photos}></PhotoList>
+        <div className="card_container">
+          <PhotoList photos={photos}></PhotoList>
+        </div>
       </>
     );
   }

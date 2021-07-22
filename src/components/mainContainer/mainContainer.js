@@ -1,7 +1,7 @@
-import '../themes/baseContainer.css';
-import ContentContainer from './contentContainer';
 import React from 'react';
-import store from '../store/store';
+import store from '../../store/store';
+import CardContainer from '../cardContainer/cardContainer';
+import './mainContainer.css';
 
 function ContainerTemplate() {
   return (
@@ -9,7 +9,7 @@ function ContainerTemplate() {
       <div className="main_heading">
         <p className="main_heading_name">Gallery</p>
       </div>
-      <ContentContainer store={store}></ContentContainer>
+      <CardContainer store={store}></CardContainer>
     </div>
   );
 }

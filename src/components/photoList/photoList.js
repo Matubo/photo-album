@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import PhotoCard from '../components/photoCard/photoCard';
-import PhotoCarusel from './photoCarusel';
+import PhotoCard from '../photoCard/photoCard';
+import PhotoCarusel from '../photoCarousel/photoCarousel';
 
 function getCardsArray(photos, callback) {
   let array = [];
@@ -35,9 +35,7 @@ function Photos(props) {
 
   return (
     <>
-      <div className="cards_container">
-        {getCardsArray(props.photos, changePopUPStatus)}
-      </div>
+      {getCardsArray(props.photos, changePopUPStatus)}
       {popUPStatus.displayed ? (
         <PhotoCarusel
           changePopUPStatus={changePopUPStatus}
@@ -51,12 +49,4 @@ function Photos(props) {
   );
 }
 
-function stateMap(state) {
-  return {
-    photos: state.photos,
-    id: state.id,
-    fetching: state.fetching,
-  };
-}
-
-export default Photos /* connect(stateMap)(Photos) */;
+export default Photos;

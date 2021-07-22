@@ -1,5 +1,5 @@
-import '../themes/stagePanel.css';
-import imgURL from '../img/arrow.png';
+import './stagePanel.css';
+import imgURL from '../../assets/img/arrow.png';
 
 function StagePanel(props) {
   return (

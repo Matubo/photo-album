@@ -1,8 +1,8 @@
-import '../themes/photoCarusel.css';
+import './photoCarousel.css';
 import { useState } from 'react';
-import { NextButton, PreviousButton } from '../components/switchButton';
+import { NextButton, PreviousButton } from '../switchButton/switchButton';
 
-function PhotoCarusel(props) {
+function PhotoCarousel(props) {
   let [currentPhotoId, setCurrentPhotoId] = useState(props.id);
 
   function nextPhoto() {
@@ -23,24 +23,24 @@ function PhotoCarusel(props) {
 
   return (
     <div
-      className="carusel_body"
+      className="carousel_body"
       onClick={(e) => {
-        if (e.target.className == 'carusel_body') {
+        if (e.target.className == 'carousel_body') {
           props.changePopUPStatus();
         }
       }}
     >
       <img
         src={props.photos[currentPhotoId]['url']}
-        className="carusel_element"
+        className="carousel_element"
         onClick={nextPhoto}
         alt="error"
       ></img>
       <NextButton callback={nextPhoto}></NextButton>
       <PreviousButton callback={previousPhoto}></PreviousButton>
-      <p className="carusel_title">{props.photos[currentPhotoId]['title']}</p>
+      <p className="carousel_title">{props.photos[currentPhotoId]['title']}</p>
     </div>
   );
 }
 
-export default PhotoCarusel;
+export default PhotoCarousel;

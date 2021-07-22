@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import switch_arrow from '../img/switch_arrow.png';
-import '../themes/switchButton.css';
+import switch_arrow from '../../assets/img/switch_arrow.png';
+import './switchButton.css';
 
 function NextButton(props) {
   let [scrollBarIndent, setScrollBarIndent] = useState({
