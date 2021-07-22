@@ -2,6 +2,7 @@ import CardWithoutBackground from '../authorCard/authorCard';
 
 function getCardsDOM(authors, callback) {
   let DOMArray = [];
+
   for (let i = 0; i < authors.length; i++) {
     DOMArray.push(
       <CardWithoutBackground
@@ -11,6 +12,7 @@ function getCardsDOM(authors, callback) {
       ></CardWithoutBackground>
     );
   }
+
   return DOMArray;
 }
 
