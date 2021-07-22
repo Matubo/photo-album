@@ -1,7 +1,7 @@
 import { React, useEffect } from 'react';
 import { connect } from 'react-redux';
 import './cardContainer.css';
-import StagePanel from '../stagePanel';
+import StagePanel from '../stagePanel/stagePanel';
 import AuthorList from '../authorList/authorList';
 import AlbumsList from '../albumList/albumList';
 import PhotoList from '../photoList/photoList';
