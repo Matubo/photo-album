@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/photo-album/static/css/main.36aa6d83.chunk.css",
-    "main.js": "/photo-album/static/js/main.caaab234.chunk.js",
-    "main.js.map": "/photo-album/static/js/main.caaab234.chunk.js.map",
-    "runtime-main.js": "/photo-album/static/js/runtime-main.e064a9bf.js",
-    "runtime-main.js.map": "/photo-album/static/js/runtime-main.e064a9bf.js.map",
-    "static/js/2.de899da9.chunk.js": "/photo-album/static/js/2.de899da9.chunk.js",
-    "static/js/2.de899da9.chunk.js.map": "/photo-album/static/js/2.de899da9.chunk.js.map",
-    "static/js/3.fee57a2f.chunk.js": "/photo-album/static/js/3.fee57a2f.chunk.js",
-    "static/js/3.fee57a2f.chunk.js.map": "/photo-album/static/js/3.fee57a2f.chunk.js.map",
+    "main.css": "/photo-album/static/css/main.4525ec1b.chunk.css",
+    "main.js": "/photo-album/static/js/main.0cc5b31a.chunk.js",
+    "main.js.map": "/photo-album/static/js/main.0cc5b31a.chunk.js.map",
+    "runtime-main.js": "/photo-album/static/js/runtime-main.6da97d61.js",
+    "runtime-main.js.map": "/photo-album/static/js/runtime-main.6da97d61.js.map",
+    "static/js/2.a7ae9273.chunk.js": "/photo-album/static/js/2.a7ae9273.chunk.js",
+    "static/js/2.a7ae9273.chunk.js.map": "/photo-album/static/js/2.a7ae9273.chunk.js.map",
+    "static/js/3.3d290e2a.chunk.js": "/photo-album/static/js/3.3d290e2a.chunk.js",
+    "static/js/3.3d290e2a.chunk.js.map": "/photo-album/static/js/3.3d290e2a.chunk.js.map",
     "index.html": "/photo-album/index.html",
-    "static/css/main.36aa6d83.chunk.css.map": "/photo-album/static/css/main.36aa6d83.chunk.css.map",
-    "static/js/2.de899da9.chunk.js.LICENSE.txt": "/photo-album/static/js/2.de899da9.chunk.js.LICENSE.txt",
+    "static/css/main.4525ec1b.chunk.css.map": "/photo-album/static/css/main.4525ec1b.chunk.css.map",
+    "static/js/2.a7ae9273.chunk.js.LICENSE.txt": "/photo-album/static/js/2.a7ae9273.chunk.js.LICENSE.txt",
     "static/media/App.css": "/photo-album/static/media/Caveat-VariableFont_wght.ddaa3ca3.ttf",
     "static/media/preloader.44d44c61.png": "/photo-album/static/media/preloader.44d44c61.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.e064a9bf.js",
-    "static/js/2.de899da9.chunk.js",
-    "static/css/main.36aa6d83.chunk.css",
-    "static/js/main.caaab234.chunk.js"
+    "static/js/runtime-main.6da97d61.js",
+    "static/js/2.a7ae9273.chunk.js",
+    "static/css/main.4525ec1b.chunk.css",
+    "static/js/main.0cc5b31a.chunk.js"
   ]
 }
