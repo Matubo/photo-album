@@ -15,7 +15,7 @@ function Container(props) {
     albums,
     photos,
     setAuthorsStage,
-    setPhotosStage,
+    setPhotoStage,
     setAlbumsStage,
     setPreviousStage,
   } = props;
@@ -55,10 +55,7 @@ function Container(props) {
           name="Albums"
         ></StagePanel>
         <div className="card_container">
-          <AlbumsList
-            albums={albums}
-            setNextStage={setPhotosStage}
-          ></AlbumsList>
+          <AlbumsList albums={albums} setNextStage={setPhotoStage}></AlbumsList>
         </div>
       </>
     );
@@ -91,7 +88,7 @@ function stateMap(store) {
 
 function dispatchMap(dispatch) {
   return {
-    setPhotosStage: (id) => dispatch({ type: 'GETNEWPHOTOS', id: id }),
+    setPhotoStage: (id) => dispatch({ type: 'GETNEWPHOTOS', id: id }),
     setAlbumsStage: (id) => dispatch({ type: 'GETNEWALBUMS', id: id }),
     setAuthorsStage: () => dispatch({ type: 'GETNEWAUTHORS' }),
     setPreviousStage: () => dispatch({ type: 'SETPREVIOUSSTAGE' }),

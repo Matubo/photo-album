@@ -4,7 +4,6 @@
 }
 .card p{
     display:block;
-    min-height: 60px;
     text-align: center;
     cursor:default;
     display: -webkit-box;
@@ -14,6 +13,7 @@
 }
 .card__title{
     margin:0;
+    min-height: 60px;
     margin-left:5px;
     margin-right:5px;
     font-weight: normal;
