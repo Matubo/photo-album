@@ -22,7 +22,6 @@ function Photos(props) {
   let [popUPStatus, setPopUPStatus] = useState({ displayed: false, id: 0 });
 
   function changePopUPStatus(id = 0) {
-    console.log(id);
     if (popUPStatus.displayed == false) {
       setPopUPStatus({ displayed: true, id: id });
     } else {
