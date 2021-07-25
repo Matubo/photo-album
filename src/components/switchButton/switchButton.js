@@ -9,25 +9,25 @@ function NextButton(props) {
     right: '0px',
   });
 
-  useEffect(() => {
+  function setNewRightIdent() {
     let newScrollBarIndent =
       window.innerWidth - document.body.clientWidth + 'px';
     setScrollBarIndent({
       right: newScrollBarIndent,
     });
+  }
+
+  useEffect(() => {
+    setNewRightIdent();
   }, []);
 
   window.onresize = function () {
-    let newScrollBarIndent =
-      window.innerWidth - document.body.clientWidth + 'px';
-    setScrollBarIndent({
-      right: newScrollBarIndent,
-    });
+    setNewRightIdent();
   };
 
   return (
     <div className="next_button" style={scrollBarIndent} onClick={callback}>
-      <img src={switch_arrow}></img>
+      <img src={switch_arrow} alt="->"></img>
     </div>
   );
 }
@@ -35,7 +35,7 @@ function NextButton(props) {
 function PreviousButton(props) {
   return (
     <div className="previous_button" onClick={props.callback}>
-      <img src={switch_arrow}></img>
+      <img src={switch_arrow} alt="<-"></img>
     </div>
   );
 }
