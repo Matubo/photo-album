@@ -1,6 +1,6 @@
 .content_heading{
     position: relative;
-    background:#f0f0f0;
+    background-color:var(--content-heading-color);
     margin:0;
     height: 30px;
 }
@@ -17,6 +17,5 @@
     font-size: 20px;
     font-weight: bold;
     text-align: center;
-    color:#49494b;
     padding-top:5px;
 }

@@ -1,21 +1,31 @@
 
-body {
-  background-color: #fff;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+:root{
+  --heading-color:#dedddb;
+  --content-heading-color:#f0f0f0;
+  --text-color:#49494b;
+  --card-container-color:white;
 }
+
+.main[data-them="dark"]{
+  --heading-color:#2e2e2e;
+  --content-heading-color:#333333;
+  --text-color:white;
+  --card-container-color:#4c4c4c;
+}
+
 .main {
   margin: 20px 40px;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   border-radius: 5px;
+  color: var(--text-color)
 }
 .main_heading {
   border-radius: 5px 5px 0 0;
   position: relative;
   top: 0;
-  background-color: #dedddb;
+  background-color: var(--heading-color);
 }
 .main_heading_name {
-  color:#49494b;
   text-align: center;
   padding: 10px;
   font-size: 30px;
