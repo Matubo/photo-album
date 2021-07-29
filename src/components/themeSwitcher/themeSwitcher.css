@@ -1,0 +1,16 @@
+.theme_switcher{
+    position: absolute;
+    top:10px;
+    right: 10px;
+    height: 40px;
+    width: 40px;
+    z-index: 10000;
+    border-radius: 5px;
+    padding: 0;
+    background-color: var(--heading-color);
+}
+.theme_switcher__img{
+    height: 32px;
+    width: 32px;
+    margin: 2px;
+}

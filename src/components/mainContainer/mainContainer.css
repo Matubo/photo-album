@@ -1,9 +1,10 @@
 
-:root{
+ :root{
   --heading-color:#dedddb;
   --content-heading-color:#f0f0f0;
   --text-color:#49494b;
   --card-container-color:white;
+  --switch-button-color:rgba(0, 0, 0, 0.671);
 }
 
 .main[data-them="dark"]{
@@ -11,9 +12,11 @@
   --content-heading-color:#333333;
   --text-color:white;
   --card-container-color:#4c4c4c;
+  --switch-button-color:rgba( 82, 82, 82, 0.671);
 }
-
+ 
 .main {
+  position: relative;
   margin: 20px 40px;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   border-radius: 5px;
