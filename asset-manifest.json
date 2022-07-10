@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/photo-album/static/css/main.61101ae0.chunk.css",
-    "main.js": "/photo-album/static/js/main.be9540a0.chunk.js",
-    "main.js.map": "/photo-album/static/js/main.be9540a0.chunk.js.map",
-    "runtime-main.js": "/photo-album/static/js/runtime-main.e064a9bf.js",
-    "runtime-main.js.map": "/photo-album/static/js/runtime-main.e064a9bf.js.map",
-    "static/js/2.433a3332.chunk.js": "/photo-album/static/js/2.433a3332.chunk.js",
-    "static/js/2.433a3332.chunk.js.map": "/photo-album/static/js/2.433a3332.chunk.js.map",
-    "static/js/3.fee57a2f.chunk.js": "/photo-album/static/js/3.fee57a2f.chunk.js",
-    "static/js/3.fee57a2f.chunk.js.map": "/photo-album/static/js/3.fee57a2f.chunk.js.map",
-    "index.html": "/photo-album/index.html",
-    "static/css/main.61101ae0.chunk.css.map": "/photo-album/static/css/main.61101ae0.chunk.css.map",
-    "static/js/2.433a3332.chunk.js.LICENSE.txt": "/photo-album/static/js/2.433a3332.chunk.js.LICENSE.txt",
-    "static/media/App.css": "/photo-album/static/media/Caveat-VariableFont_wght.ddaa3ca3.ttf",
-    "static/media/preloader.44d44c61.png": "/photo-album/static/media/preloader.44d44c61.png"
+    "main.css": "/photo_album/static/css/main.96166892.chunk.css",
+    "main.js": "/photo_album/static/js/main.be9540a0.chunk.js",
+    "main.js.map": "/photo_album/static/js/main.be9540a0.chunk.js.map",
+    "runtime-main.js": "/photo_album/static/js/runtime-main.7dcb4f24.js",
+    "runtime-main.js.map": "/photo_album/static/js/runtime-main.7dcb4f24.js.map",
+    "static/js/2.433a3332.chunk.js": "/photo_album/static/js/2.433a3332.chunk.js",
+    "static/js/2.433a3332.chunk.js.map": "/photo_album/static/js/2.433a3332.chunk.js.map",
+    "static/js/3.fee57a2f.chunk.js": "/photo_album/static/js/3.fee57a2f.chunk.js",
+    "static/js/3.fee57a2f.chunk.js.map": "/photo_album/static/js/3.fee57a2f.chunk.js.map",
+    "index.html": "/photo_album/index.html",
+    "static/css/main.96166892.chunk.css.map": "/photo_album/static/css/main.96166892.chunk.css.map",
+    "static/js/2.433a3332.chunk.js.LICENSE.txt": "/photo_album/static/js/2.433a3332.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/photo_album/static/media/Caveat-VariableFont_wght.ddaa3ca3.ttf",
+    "static/media/preloader.44d44c61.png": "/photo_album/static/media/preloader.44d44c61.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.e064a9bf.js",
+    "static/js/runtime-main.7dcb4f24.js",
     "static/js/2.433a3332.chunk.js",
-    "static/css/main.61101ae0.chunk.css",
+    "static/css/main.96166892.chunk.css",
     "static/js/main.be9540a0.chunk.js"
   ]
 }
